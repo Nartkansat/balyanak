@@ -56,8 +56,7 @@
       <form id="gate-form" class="gate-form" onsubmit="return false;">
         <div class="input-wrapper">
           <span class="input-icon">📍</span>
-          <input type="text" id="gate-input" placeholder="Örn: 36.5007, 34.1884 veya o pansiyonun adı..."
-            autocomplete="off" spellcheck="false" required />
+          <input type="text" id="gate-input" placeholder="Şifreyi Gir" autocomplete="off" spellcheck="false" required />
           <button type="submit" id="gate-submit-btn" class="gate-btn" title="Giriş Yap">
             <span>Aç</span>
             <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -240,50 +239,54 @@
               <span class="speech-quote">💬</span>
               <span id="tactician-speech-text"></span>
             </div>
-          <!-- DOUBLE UP 1.LİK MAÇ KARTI VİTRİNİ -->
-          <div class="tft-match-showcase" id="tft-match-showcase" data-img="assets/tft_double_up_win.png" data-title="Muhteşem İkili 1.lik Zaferimiz 🏆" data-desc="Double Up #1 | PAPAZ (Plat 4) & jMiyavv (Gold 3) — 33:18 Round 6-2 Efsanevi Şampiyonluk" role="button" tabindex="0" title="Maç detayını büyütmek için tıkla 🔍">
-            <div class="tft-match-header">
-              <div class="tft-match-badge-left">
-                <span class="tft-win-crown">👑</span>
-                <span class="tft-match-title-bold">#1 DOUBLE UP ŞAMPİYONLUĞUMUZ</span>
+            <!-- DOUBLE UP 1.LİK MAÇ KARTI VİTRİNİ -->
+            <div class="tft-match-showcase" id="tft-match-showcase" data-img="assets/tft_double_up_win.png"
+              data-title="Muhteşem İkili 1.lik Zaferimiz 🏆"
+              data-desc="Double Up #1 | PAPAZ (Plat 4) & jMiyavv (Gold 3) — 33:18 Round 6-2 Efsanevi Şampiyonluk"
+              role="button" tabindex="0" title="Maç detayını büyütmek için tıkla 🔍">
+              <div class="tft-match-header">
+                <div class="tft-match-badge-left">
+                  <span class="tft-win-crown">👑</span>
+                  <span class="tft-match-title-bold">#1 DOUBLE UP ŞAMPİYONLUĞUMUZ</span>
+                </div>
+                <span class="tft-match-round-pill">⏱️ 33:18 • Rd 6-2</span>
               </div>
-              <span class="tft-match-round-pill">⏱️ 33:18 • Rd 6-2</span>
+              <div class="tft-match-img-container">
+                <img src="assets/tft_double_up_win.png" alt="TFT Double Up 1.lik Zaferi" class="tft-match-img"
+                  loading="lazy" />
+                <div class="tft-match-overlay">
+                  <span class="tft-zoom-badge">🔍 Tam Ekran İncele</span>
+                </div>
+              </div>
+              <div class="tft-match-footer">
+                <div class="tft-duo-team-pill">
+                  <span class="summoner-tag partner">🦊 jMiyavv (Gold 3)</span>
+                  <span class="summoner-sep">&amp;</span>
+                  <span class="summoner-tag me">🗡️ PAPAZ (Plat 4)</span>
+                </div>
+                <span class="tft-match-hint-text">Birlikte 1. olduğumuz o unutulmaz an 💖</span>
+              </div>
             </div>
-            <div class="tft-match-img-container">
-              <img src="assets/tft_double_up_win.png" alt="TFT Double Up 1.lik Zaferi" class="tft-match-img" loading="lazy" />
-              <div class="tft-match-overlay">
-                <span class="tft-zoom-badge">🔍 Tam Ekran İncele</span>
-              </div>
+
+            <div class="tft-stats-grid" id="tft-stats-grid">
+              <!-- JS ile doldurulacak statlar -->
             </div>
-            <div class="tft-match-footer">
-              <div class="tft-duo-team-pill">
-                <span class="summoner-tag partner">🦊 jMiyavv (Gold 3)</span>
-                <span class="summoner-sep">&amp;</span>
-                <span class="summoner-tag me">🗡️ PAPAZ (Plat 4)</span>
-              </div>
-              <span class="tft-match-hint-text">Birlikte 1. olduğumuz o unutulmaz an 💖</span>
+
+            <div class="tft-quote">
+              <span class="tft-quote-icon">❝</span>
+              <p id="tft-quote-text">Birlikte 8. olsak bile o maçı seninle oynamak hayatımın en güzel dakikaları...</p>
             </div>
           </div>
 
-          <div class="tft-stats-grid" id="tft-stats-grid">
-            <!-- JS ile doldurulacak statlar -->
+          <!-- Kaydırma İpucu -->
+          <div class="scroll-cue">
+            <span>Bizim Hikayemizi Aşağı Kaydır</span>
+            <div class="mouse-scroll">
+              <div class="mouse-wheel"></div>
+            </div>
           </div>
 
-          <div class="tft-quote">
-            <span class="tft-quote-icon">❝</span>
-            <p id="tft-quote-text">Birlikte 8. olsak bile o maçı seninle oynamak hayatımın en güzel dakikaları...</p>
-          </div>
         </div>
-
-        <!-- Kaydırma İpucu -->
-        <div class="scroll-cue">
-          <span>Bizim Hikayemizi Aşağı Kaydır</span>
-          <div class="mouse-scroll">
-            <div class="mouse-wheel"></div>
-          </div>
-        </div>
-
-      </div>
     </section>
 
     <!-- ========================================== -->
@@ -316,7 +319,8 @@
           <span class="section-badge balyanak-badge">🍯 RESMİ BAL YANAK KÖŞESİ 🌸</span>
           <h2 class="section-title">Dünyanın En Tatlı, En Yumuşacık &amp; En Öpülesi Yanağı</h2>
           <p class="section-subtitle">
-            Evrendeki bütün tatlılar, şekerler ve ballar bir araya gelse senin o bir çift yanağının tatlılığına yaklaşamaz...
+            Evrendeki bütün tatlılar, şekerler ve ballar bir araya gelse senin o bir çift yanağının tatlılığına
+            yaklaşamaz...
             İşte benim bu hayattaki en büyük zaafım, öpmeye doyamadığım o bal yanaklar!
           </p>
         </div>
@@ -332,7 +336,8 @@
             <span class="balyanak-honey-pot">🍯✨</span>
             <div class="balyanak-banner-text">
               <h3 class="balyanak-banner-title">Adın gibi, ruhun gibi yanağın da bal...</h3>
-              <p class="balyanak-banner-desc">Sana boşuna 'Bal Yanak' demiyorum; sen bu evrenin en tatlı armağanısın. Seni her zerrenle çok seviyorum! 💖</p>
+              <p class="balyanak-banner-desc">Sana boşuna 'Bal Yanak' demiyorum; sen bu evrenin en tatlı armağanısın.
+                Seni her zerrenle çok seviyorum! 💖</p>
             </div>
             <button type="button" class="balyanak-kiss-all-btn" id="balyanak-kiss-all-btn">
               <span>💋 Yanağına Kocaman Öpücük Kondur</span>
@@ -361,13 +366,13 @@
       <!-- Kategori Filtre Butonları -->
       <div class="nostalgia-filters" id="nostalgia-filters">
         <button type="button" class="nostalgia-filter-btn active" data-filter="all">
-          <span>✨ Tümü (10)</span>
+          <span>✨ Tümü (13)</span>
         </button>
         <button type="button" class="nostalgia-filter-btn" data-filter="photo">
           <span>📸 Fotoğraflar (8)</span>
         </button>
         <button type="button" class="nostalgia-filter-btn" data-filter="video">
-          <span>🎬 Canlı Videolar (2)</span>
+          <span>🎬 Canlı Videolar (5)</span>
         </button>
       </div>
 

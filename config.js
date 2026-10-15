@@ -187,11 +187,11 @@ const APP_CONFIG = {
     {
       id: "milestone-9",
       date: "Kalbinin Ritmi",
-      title: "Derin Bakışlar & Kalp Kalbe",
+      title: "Kalp Kalbe",
       location: "Starbucks",
       photo: "assets/media/9.jpg",
       badge: "Derin Sevgi 🖤",
-      note: "Boynuna sokulduğumda kalbimin nasıl çarptığını bir ben biliyorum, bir de sen. Senin o derin bakışların benim hayatımdaki en büyük pusulam.",
+      note: "Senin o bakışların,mimiklerin benim için her şeyi ifade ediyor, ellerini tuttuğumda bile kalbim yerinden çıkacak gibi hissediyorum.",
       bgAtmosphere: "linear-gradient(135deg, #1a1426 0%, #322144 100%)"
     },
     {
@@ -207,11 +207,11 @@ const APP_CONFIG = {
     {
       id: "milestone-11",
       date: "Unutulmaz Gezimiz",
-      title: "Ankara Ayazında Birbirimizi Isıttığımız Anlar",
+      title: "Ata'mızın Huzurunda Sevdiğim Kadınla",
       location: "Ankara Yolları",
       photo: "assets/media/11.jpeg",
       badge: "Ankara Hatırası 🏛️",
-      note: "Merdivenleri tırmanırken, kalabalığın içinde elini sıkıca tuttuğum o anlar... Soğuk havaya inat kalbimizin sıcaklığı bütün şehri ısıtmaya yeterdi.",
+      note: "Mustafa Kemal Paşa'nın huzuruna bu hayatta en çok sevdiğim insanla çıkmak çok güzeldi, Onunla beraber tanışmış gibi..",
       bgAtmosphere: "linear-gradient(135deg, #151b2c 0%, #253352 100%)"
     },
     {
@@ -267,11 +267,11 @@ const APP_CONFIG = {
     {
       id: "milestone-17",
       date: "Gözüm Hep Sende",
-      title: "Merdiven Başındaki Kaçamak Bakış & Şıklığımız",
+      title: "Bizim Şıklığımız ❤️",
       location: "Martı Otel",
       photo: "assets/media/17.jpg",
       badge: "Asil & Zarif 🖤",
-      note: "Nereye gidersek gidelim gözlerimin sadece seni gördüğü o zarif an. Saçlarına sokulup derin bir nefes aldığım her an hayatın bana verdiği en büyük hediyeyi hatırlıyorum.",
+      note: "Beraber birbirimizi tamamlayan, en yakışan iki insan biziz.. Sana hep diyorum benim diğer yanım sen evet gerçekten sen ",
       bgAtmosphere: "linear-gradient(135deg, #17122b 0%, #2c1e4c 100%)"
     },
     {
@@ -317,7 +317,7 @@ const APP_CONFIG = {
       {
         id: "balyanak-1",
         photo: "assets/balyanak_1.jpg",
-        badge: "Panda Modu & Pofudukluk 🐼☁️",
+        badge: "Bal Yanak Modu & Haticecikkk 🐼☁️",
         title: "Yanağını Isırarak Sevme İsteği Uyandıran O Bakış",
         praise: "O kapüşonun altından öyle tatlı bir bakışın ve öyle yumuşacık, pofuduk bir yanağın var ki... İnsanın dünyadaki bütün dertlerini unutturup sadece o yanağı saatlerce öpüp koklayası geliyor. Dünyanın en sevimli pandası bile senin bu yanağınla yarışamaz!",
         stat: "Pofudukluk: %1000 Bulut Kıvamı ☁️",
@@ -458,6 +458,42 @@ const APP_CONFIG = {
       thumbUrl: "assets/nostalgia/nostalji_video_2_thumb.jpg",
       duration: "0:18",
       desc: "Her saniyesinde eğlence ve neşe olan o günün canlı hatırası... Seninle geçen her an bir bayram şenliği gibi."
+    },
+    {
+      id: "nostalgia-new1",
+      type: "video",
+      title: "Güneşin Altında O Masum Güzelliğin ☀️🌸",
+      date: "Güneşli Bir Gün",
+      badge: "Canlı Video ▶",
+      sticker: "DURU GÜZELLİK",
+      mediaUrl: "assets/nostalgia/new1.mp4",
+      thumbUrl: "assets/nostalgia/new1_thumb.jpg",
+      duration: "0:05",
+      desc: "Hasır şemsiyelerin altında, telefonuna bakarken rüzgarla dans eden saçlarını düzelttiğin o kısacık an bile kalbimin nasıl hızla çarptığını anlatamam. Her halin ayrı bir sanat eseri sevgilim."
+    },
+    {
+      id: "nostalgia-new2",
+      type: "video",
+      title: "Palmiyeler Altında Yan Yana Gülüşümüz 🌴💖",
+      date: "Sahil Yürüyüşümüz",
+      badge: "Canlı Video ▶",
+      sticker: "İKİMİZİN IŞILTISI",
+      mediaUrl: "assets/nostalgia/new2.mp4",
+      thumbUrl: "assets/nostalgia/new2_thumb.jpg",
+      duration: "0:08",
+      desc: "Güneş yüzümüze vururken senin o ışıl ışıl gülümsemenle kameraya baktığımız o an... Yanımda senin gibi bir mucize varken dünyada başka hiçbir şeye ihtiyacım yok. En sevdiğim canlı anılarımızdan biri!"
+    },
+    {
+      id: "nostalgia-new3",
+      type: "video",
+      title: "Karşımda Dünyanın En Güzel Manzarası 🍟🍻",
+      date: "En Lezzetli Sohbet",
+      badge: "Canlı Video ▶",
+      sticker: "CANLI SOHBET",
+      mediaUrl: "assets/nostalgia/new3.mp4",
+      thumbUrl: "assets/nostalgia/new3_thumb.jpg",
+      duration: "0:14",
+      desc: "Masada patatesler, soğuk içecekler ve karşımda dünyalara değişmeyeceğim o tatlı gülüşün... Sen bir şeyler anlatırken ellerini tatlı tatlı hareket ettirişini, gözlerinin içinin parlayışını ömür boyu hayranlıkla izleyebilirim."
     }
   ],
 
