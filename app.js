@@ -335,6 +335,7 @@ function populateContent() {
             <span class="tactician-star-badge">${t.star}</span>
           </div>
           <div class="tactician-info">
+            <span class="tactician-summoner-pill">${t.summoner || ""}</span>
             <h4 class="tactician-name">${t.name}</h4>
             <span class="tactician-role">${t.role}</span>
           </div>
@@ -347,7 +348,7 @@ function populateContent() {
           document.querySelectorAll(".tactician-card").forEach(c => c.classList.remove("active-poke"));
           tCard.classList.add("active-poke");
 
-          speechText.textContent = `${t.name}: "${t.dialogue}"`;
+          speechText.textContent = `${t.name} (${t.summoner || ""}): "${t.dialogue}"`;
           speechBubble.classList.remove("hidden");
           speechBubble.classList.add("pop-bounce");
 

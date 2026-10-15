@@ -62,29 +62,36 @@ const APP_CONFIG = {
   tftEasterEgg: {
     synergyName: "Sonsuz Aşk Sinerjisi (Heartsteel & Star Guardian)",
     synergyTier: "Seviye 3 / 3 Efsanevi ⭐⭐⭐",
+    matchHighlight: {
+      title: "Double Up (Muhteşem İkili) 1.lik Zaferimiz 🏆",
+      sub: "PAPAZ (Plat 4) & jMiyavv (Gold 3) — 33:18 Efsanevi Şampiyonluk",
+      image: "assets/tft_double_up_win.png"
+    },
     // Strateji Ustalarımız (Little Legends)
     tacticians: [
       {
         id: "tactician-1",
-        name: "Şövalye Pengu",
-        role: "Takımın Beyni & Kraliçesi 🐧👑",
-        image: "assets/pengu.jpg",
+        name: "Kanmei Suspus (Hushtail)",
+        summoner: "jMiyavv 🌸",
+        role: "Takımın Kraliçesi & Şampiyonu 🦊👑",
+        image: "assets/kanmei_hushtail.jpg",
         star: "⭐⭐⭐ (3 Yıldız)",
-        dialogue: "Dükkandaki tüm altınları harcasam da bulabileceğim en değerli şampiyon sensin! 💖"
+        dialogue: "Seninle oynadığım her el 1. olmak garanti, dükkandaki en değerli şampiyon sensin! 💖"
       },
       {
         id: "tactician-2",
-        name: "Şapşal Şonk (Choncc)",
-        role: "Sadık Duo Partnerin 🐲🍗",
-        image: "assets/choncc.jpg",
+        name: "Chibi Akademi Katarina",
+        summoner: "PAPAZ ⚔️",
+        role: "Sadık Duo Partnerin & Muhafızın 🗡️🎀",
+        image: "assets/chibi_katarina.jpg",
         star: "⭐⭐⭐ (3 Yıldız)",
-        dialogue: "Tavuk butumu bile seninle paylaşırım, lütfen beni affet ve sımsıkı sarılalım 🥺"
+        dialogue: "Bıçaklarım da tüm altınlarım da senin galibiyetin için... Yeter ki sen gül birtanem 🥺"
       }
     ],
     stats: [
-      { label: "Sinerji Bonusu", value: "+9999 Kalp Atışı" },
-      { label: "Tahta Durumu", value: "100 Can / Galibiyet Serisi 🔥" },
-      { label: "Özel Eşya", value: "Ebedi Özür & Telafi Kılıcı ⚔️" }
+      { label: "Lobi Derecesi", value: "#1 Double Up Şampiyonu 🏆" },
+      { label: "Süre / Round", value: "33:18 / Round 6-2 🔥" },
+      { label: "Özel Duo Eşyası", value: "Ebedi Özür & Telafi Kılıcı ⚔️" }
     ],
     tacticianQuote: "Birlikte 8. olsak bile o maçı seninle oynamak hayatımın en güzel dakikaları..."
   },
@@ -270,11 +277,11 @@ const APP_CONFIG = {
     {
       id: "milestone-18",
       date: "O Meşhur TFT Gecesi",
-      title: "Sabaha Karşı TFT Turnuvamız 🎮",
+      title: "Muhteşem İkili 1.lik Zaferimiz 🏆",
       location: "Discord & Sihirdar Vadisi",
-      photo: "assets/pengu.jpg",
-      badge: "Duo Sevgilim ⭐⭐⭐",
-      note: "Sen 'Bu kompu kesin 1. yapacağım' derken benim dükkanda tüm altınları bitirip sana şampiyon aramam... Canımız 1 kaldığında bile seninle gülmek dünyanın en güzel şeyiydi. Bu hayattaki en iyi takım arkadaşım sensin.",
+      photo: "assets/tft_double_up_win.png",
+      badge: "Double Up #1 Şampiyonluk 🏆",
+      note: "Sen Kanmei Suspus'unla (jMiyavv) 'Bu maçı kesin 1. bitireceğiz' derken benim Chibi Akademi Katarina'mla (PAPAZ) sana şampiyon aramam... Ve işte o efsane 33 dakikalık 1.liğimiz! Canımız 1 kaldığında bile seninle gülmek dünyanın en güzel şeyiydi. Bu hayattaki en iyi takım arkadaşım sensin.",
       bgAtmosphere: "linear-gradient(135deg, #0c1527 0%, #1f2b56 100%)"
     },
     {
