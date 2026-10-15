@@ -425,6 +425,17 @@ const APP_CONFIG = {
       desc: "Sen Kanmei Suspus'unla (jMiyavv) 'Bu maçı kesin 1. bitireceğiz' derken benim Chibi Akademi Katarina'mla (PAPAZ) sana şampiyon aramam... Ve işte o efsane 33 dakikalık 1.liğimiz! Canımız 1 kaldığında bile seninle gülmek dünyanın en güzel şeyiydi. Bu hayattaki en iyi takım arkadaşım sensin."
     },
     {
+      id: "nostalgia-ders",
+      type: "photo",
+      title: "Sözde Ders Çalışmaya Gittiğimiz O Gün 📚☕",
+      date: "Ders & Kaçamak Gülüşler",
+      badge: "Çalışma Arkadaşım 📝💖",
+      sticker: "ÇOK ÇALIŞTIK (!)",
+      mediaUrl: "assets/nostalgia/ders_calisma.jpg",
+      thumbUrl: "assets/nostalgia/ders_calisma.jpg",
+      desc: "Sözde ders çalışacaktık ama senin o tatlılığına, mimiklerine ve güzel yüzüne bakmaktan bir satır bile odaklanamadığım o gün... Kitapların, defterlerin arasında bile gözlerimin sadece seni gördüğü; en sıkıcı anı bile dünyanın en tatlı hatırasına dönüştürdüğün o an."
+    },
+    {
       id: "nostalgia-6",
       type: "video",
       title: "Canlı Kahkahalar & Tatlı Anılar 🎥",
