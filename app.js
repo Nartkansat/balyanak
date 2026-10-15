@@ -448,6 +448,23 @@ function populateContent() {
     letterBody.appendChild(p);
   });
 
+  // Mektup İçi Gelecek Hayali (Belki Bir Gün...)
+  const fd = APP_CONFIG.letter ? APP_CONFIG.letter.futureDream : null;
+  if (fd) {
+    const fdEl = document.getElementById("letter-future-card");
+    if (fdEl) {
+      fdEl.dataset.img = fd.photo;
+      fdEl.dataset.title = fd.title;
+      fdEl.dataset.desc = `${fd.subtitle} — ${fd.note}`;
+      const img = fdEl.querySelector(".future-card-img");
+      if (img) img.src = fd.photo;
+      const heading = fdEl.querySelector(".future-card-heading");
+      if (heading) heading.textContent = fd.subtitle || fd.title;
+      const text = document.getElementById("future-card-text");
+      if (text) text.textContent = fd.note;
+    }
+  }
+
   // Kaçan Buton Sorusu
   document.getElementById("runaway-question").textContent = APP_CONFIG.runawaySection.question;
   document.getElementById("runaway-subtitle").textContent = APP_CONFIG.runawaySection.subtitle;
@@ -477,16 +494,35 @@ function initBalYanakSection() {
     grid.innerHTML = "";
     sec.cards.forEach((c) => {
       const card = document.createElement("div");
-      card.className = "balyanak-card";
-      card.dataset.img = c.photo;
+      card.className = `balyanak-card ${c.type === "video" ? "is-video-card" : ""}`;
       card.dataset.title = c.title;
       card.dataset.desc = `${c.badge} — ${c.stat}`;
+
+      if (c.type === "video") {
+        card.dataset.video = c.video;
+        card.dataset.img = c.photo;
+      } else {
+        card.dataset.img = c.photo;
+      }
+
+      const mediaOverlayHtml = c.type === "video"
+        ? `
+          <div class="balyanak-video-play-pulse" aria-hidden="true">
+            <span class="play-pulse-triangle">▶</span>
+          </div>
+          <span class="balyanak-badge-pill">${c.badge}</span>
+          <span class="balyanak-zoom-pill video-pill">🎬 Canlı İzle (${c.duration || "0:03"})</span>
+        `
+        : `
+          <span class="balyanak-badge-pill">${c.badge}</span>
+          <span class="balyanak-zoom-pill">🔍 Büyüt</span>
+        `;
+
       card.innerHTML = `
         <div class="balyanak-card-tape" aria-hidden="true"></div>
         <div class="balyanak-img-frame">
           <img class="balyanak-img" src="${c.photo}" alt="${c.title}" loading="lazy" />
-          <span class="balyanak-badge-pill">${c.badge}</span>
-          <span class="balyanak-zoom-pill">🔍 Büyüt</span>
+          ${mediaOverlayHtml}
         </div>
         <div class="balyanak-card-body">
           <div class="balyanak-stat-tag">

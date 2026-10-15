@@ -287,12 +287,12 @@ const APP_CONFIG = {
     {
       id: "milestone-19",
       date: "Bugün, Doğum Günün 🎂",
-      title: "İyi ki Doğdun Hayatımın Anlamı",
+      title: "Sıcacık Mum Işığında: İyi ki Doğdun Hayatımın Anlamı 🕯️💖",
       location: "Kalbimin Tam Ortası",
-      photo: "assets/media/1.jpg",
-      badge: "Mutlu Yıllar Birtanem 🎉",
-      note: "Bugün senin günün. Sultan Pansiyon'da başlayan bu hikayeyi ömrümün sonuna kadar aynı aşkla, sadakatle ve hürmetle sürdürmek istiyorum. Dünyaya gelişinle hayatıma kattığın her güzellik için sana minnettarım. Seni çok ama çok seviyorum.",
-      bgAtmosphere: "linear-gradient(135deg, #180d2c 0%, #321652 100%)"
+      photo: "assets/media/dogum_gunu_mum.png",
+      badge: "İyi ki Doğdun Bal Yanaklım 🎉",
+      note: "Bugün senin doğum günün... Şu an fiziken yanında olamasam da bilsen ne kadar çok yanında olmak, o pastadaki mumları seninle birlikte üflemek ve o bal yanağını öperek 'İyi ki varsın birtanem' demek isterdim. Bütün kalbim, aklım ve ruhum şu an senin yanında. Bu hayatta başıma gelen en güzel şey sensin. Seni her şeyden ve herkesten çok seviyorum.",
+      bgAtmosphere: "linear-gradient(135deg, #2b1118 0%, #521d28 100%)"
     }
   ],
 
@@ -305,7 +305,15 @@ const APP_CONFIG = {
       "İnan bana seni üzmek, yüzündeki o ışığı söndürmek dünyada isteyeceğim en son şeydi.Senin o güzel kalbini incittiğim için ne kadar pişman olduğumu anlatamam.",
       "Bugün senin doğum günün... İyi ki doğdun, iyi ki varsın ve iyi ki seni bu kadar çok sevmişim. Lütfen beni affet ve seni her şeyden çok seviyorum."
     ],
-    signature: "Daima senin TFT Duo'n ve Sevgilin..."
+    signature: "Daima senin TFT Duo'n ve Sevgilin...",
+    // Belki Bir Gün... (Gelecek Hayalimiz & Düğün Kehaneti)
+    futureDream: {
+      title: "Belki Bir Gün... 🌅💍",
+      subtitle: "Gün Batımında Bir Ömür Boyu 'Evet'...",
+      photo: "assets/media/belki_bir_gun_dugun.png",
+      badge: "Bizim Geleceğimiz 🕊️✨",
+      note: "Dünyanın bütün telaşı ve gürültüsü geride kaldığında, bir gün batımının kızıla boyadığı denize karşı seninle bir ömre 'Evet' diyeceğimiz o gün... Ben seninle sadece bugünü değil, saçlarımızın birlikte beyazlayacağı bütün yarınları hayal ediyorum. Sen benim hem dünüm, hem bugünüm, hem de en güzel geleceğimsin."
+    }
   },
 
   // 6.2. RESMİ BAL YANAK KÖŞESİ (DÜNYANIN EN TATLI YANAĞI)
@@ -340,6 +348,19 @@ const APP_CONFIG = {
         praise: "Hiçbir filtreye, hiçbir süse gerek yok... O masum dudak büküşün ve kameraya uzanan o pürüzsüz bal yanağın... Her baktığımda içimi eriten, kalbimi hızlandıran ve beni sana her gün bin defa daha aşık eden o eşsiz güzellik.",
         stat: "Öpülme İhtiyacı: Saniyede 1000 Kere 💋",
         quote: "Beni benden alan o kusursuz doğallık..."
+      },
+      {
+        id: "balyanak-4",
+        type: "video",
+        video: "assets/balyanak_video.mp4",
+        photo: "assets/balyanak_video_thumb.jpg",
+        duration: "0:03",
+        badge: "Canlı Bal Yanak Hareketi 🎬💖",
+        title: "O Paha Biçilmez Canlı Bal Yanak Tebessümü",
+        praise: "Kamera karşısında o masum dudak büküşün, yanaklarının hafifçe kıpırdayışı ve gözlerindeki o saf sevgi... Fotoğrafların bile anlatmaya yetmediği o yumuşacık enerjin işte tam olarak bu! Dünyanın en tatlı, en öpülesi canlı manzarası sensin.",
+        stat: "Canlılık: %1000 Saf Sevimlilik 🌸✨",
+        quote: "Yüzünde açan her tebessüm benim bayramım...",
+        kissCount: 0
       }
     ],
     praiseQuote: "Adın gibi, ruhun gibi yanağın da bal... Seni her şeyden çok seviyorum Bal Yanak'ım! 🍯💖"
