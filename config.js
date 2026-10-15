@@ -10,7 +10,7 @@ const APP_CONFIG = {
   analytics: {
     enabled: true,
     // Google Sheets Apps Script Web App URL'nizi buraya tırnakların içine yapıştırın:
-    googleSheetsUrl: ""
+    googleSheetsUrl: "https://script.google.com/macros/s/AKfycbwqYrwcnll449U0YdGciGbhNhi_19gVW62XxscHPPvNxsn5kLruQbvRbJyAgOaZcl6Rxg/exec"
   },
 
   // 1. KİŞİSEL BİLGİLER

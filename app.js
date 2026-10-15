@@ -26,11 +26,15 @@ function logEvent(eventName, detail = "", extra = "") {
       method: "POST",
       mode: "no-cors",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "text/plain;charset=utf-8"
       },
       body: JSON.stringify(payload)
-    }).catch(() => {});
-  } catch (err) {}
+    }).catch((err) => {
+      console.warn("Log gönderilemedi:", err);
+    });
+  } catch (err) {
+    console.warn("Log hatası:", err);
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
