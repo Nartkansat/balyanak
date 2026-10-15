@@ -413,6 +413,17 @@ const APP_CONFIG = {
       desc: "İşte bu gülüşe bir ömür verilir! Birlikte geçirdiğimiz her anı karnımıza ağrılar girene kadar gülerek taçlandırdığımız o eşsiz anlar."
     },
     {
+      id: "nostalgia-behzat",
+      type: "photo",
+      title: "Dışarıda Beraber Behzat Ç. & Tuborg Keyfimiz 🍻🎬",
+      date: "O Huzurlu Akşamüstü",
+      badge: "Çekiç ve Gül & Biz 🖤",
+      sticker: "BİZİM HAVAMIZ",
+      mediaUrl: "assets/nostalgia/behzat_c.jpg",
+      thumbUrl: "assets/nostalgia/behzat_c.jpg",
+      desc: "Tahta kutuya telefonu yaslayıp dışarıda seninle Behzat Ç. izlediğimiz o gün... İki soğuk Tuborg, fonda 'Çekiç ve Gül' ve yanımda dünyalara değişmeyeceğim o güzel insan. Dünyanın en lüks restoranı bile seninle paylaştığım şu masadaki samimiyetin, huzurun ve muhabbetin yanından bile geçemez."
+    },
+    {
       id: "nostalgia-6",
       type: "video",
       title: "Canlı Kahkahalar & Tatlı Anılar 🎥",
