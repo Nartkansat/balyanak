@@ -705,23 +705,57 @@ function initRunawayButton() {
 
   function resetPosition() {
     noBtn.style.position = "absolute";
-    noBtn.style.left = "65%";
-    noBtn.style.top = "50%";
-    noBtn.style.transform = "translate(-50%, -50%)";
+    if (window.innerWidth <= 768) {
+      // Mobilde dikey yerleşim: Evet üstte, Hayır altta (asla üst üste çakışmaz)
+      noBtn.style.left = "50%";
+      noBtn.style.top = "76%";
+      noBtn.style.transform = "translate(-50%, -50%)";
+    } else {
+      noBtn.style.left = "65%";
+      noBtn.style.top = "50%";
+      noBtn.style.transform = "translate(-50%, -50%)";
+    }
   }
 
   resetPosition();
+  window.addEventListener("resize", resetPosition);
 
   function dodge() {
     const arenaRect = arena.getBoundingClientRect();
     const btnRect = noBtn.getBoundingClientRect();
+    const yesBtn = document.getElementById("yes-btn");
+    const yesRect = yesBtn ? yesBtn.getBoundingClientRect() : null;
 
-    const pad = 15;
-    const maxX = arenaRect.width - btnRect.width - pad;
-    const maxY = arenaRect.height - btnRect.height - pad;
+    const pad = 12;
+    const maxX = Math.max(pad, arenaRect.width - btnRect.width - pad);
+    const maxY = Math.max(pad, arenaRect.height - btnRect.height - pad);
 
-    const randomX = Math.max(pad, Math.random() * maxX);
-    const randomY = Math.max(pad, Math.random() * maxY);
+    let randomX = pad;
+    let randomY = pad;
+    let attempts = 0;
+
+    // Evet butonu ile üst üste çakışmayı önleyen akıllı koordinat seçimi
+    do {
+      randomX = pad + Math.random() * (maxX - pad);
+      randomY = pad + Math.random() * (maxY - pad);
+      attempts++;
+
+      if (!yesRect) break;
+
+      const testLeft = arenaRect.left + randomX;
+      const testTop = arenaRect.top + randomY;
+      const testRight = testLeft + btnRect.width;
+      const testBottom = testTop + btnRect.height;
+
+      const overlapsYes = !(
+        testRight < yesRect.left - 8 ||
+        testLeft > yesRect.right + 8 ||
+        testBottom < yesRect.top - 8 ||
+        testTop > yesRect.bottom + 8
+      );
+
+      if (!overlapsYes || attempts > 12) break;
+    } while (attempts <= 12);
 
     noBtn.style.left = `${randomX}px`;
     noBtn.style.top = `${randomY}px`;

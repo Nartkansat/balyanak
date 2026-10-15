@@ -700,16 +700,16 @@ body {
   background: #fff;
   padding: 8px 8px 12px;
   border-radius: 6px;
-  width: 155px !important;
-  max-width: 155px !important;
-  height: auto !important;
-  flex: 0 0 155px !important;
+  width: 155px;
+  max-width: 155px;
+  height: auto;
+  flex: 0 0 155px;
   cursor: pointer;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
   transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
   position: relative;
-  overflow: visible !important;
-  margin-bottom: 0 !important;
+  overflow: visible;
+  margin-bottom: 0;
 }
 
 .origin-photo-polaroid:nth-child(1) {
@@ -2489,120 +2489,255 @@ body.theater-mode-on .cinema-theater-card {
 }
 
 /* ========================================================================
-   %100 MOBİL & TABLET UYUMLULUK (RESPONSIVE)
+   %100 MOBİL & TABLET UYUMLULUK (RESPONSIVE MASTER SUITE)
    ======================================================================== */
 @media (max-width: 768px) {
-  .hero-section {
-    padding-top: 5.5rem;
-  }
-
+  /* Floating Nav */
   .floating-nav {
-    width: 94%;
+    top: max(0.65rem, env(safe-area-inset-top));
+    width: min(94%, 560px);
     padding: 0.45rem 1rem;
   }
 
-  .origin-map-card {
-    padding: 1.2rem;
+  .nav-title {
+    font-size: 0.84rem;
   }
 
-  .map-wrapper {
-    height: 250px;
+  .audio-btn {
+    padding: 0.35rem 0.8rem;
+    font-size: 0.78rem;
+    min-height: 38px;
+  }
+
+  /* Hero */
+  .hero-section {
+    padding: calc(5rem + env(safe-area-inset-top)) 1.1rem 2.8rem;
+  }
+
+  .birthday-tag {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.9rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .hero-title {
+    font-size: clamp(1.85rem, 6.2vw, 2.6rem);
+    line-height: 1.22;
+    margin-bottom: 1.2rem;
+    word-break: normal;
+  }
+
+  .hero-subline {
+    font-size: clamp(1.15rem, 4vw, 1.45rem);
+  }
+
+  .hero-description {
+    font-size: 1rem;
+    line-height: 1.68;
+    margin-bottom: 2.2rem;
+  }
+
+  /* Sultan Pansiyon / Origin Card */
+  .origin-map-card {
+    padding: 1.25rem 1rem;
+    border-radius: 20px;
+    margin-bottom: 2rem;
   }
 
   .map-card-header {
     flex-direction: column;
     align-items: flex-start;
-  }
-
-  .origin-photos-grid {
     gap: 0.8rem;
+    margin-bottom: 1rem;
   }
 
-  .origin-photo-polaroid {
-    width: calc(50% - 0.5rem);
-    max-width: 145px;
-    padding: 6px 6px 10px;
+  .map-title {
+    font-size: 1.25rem;
   }
 
-  .origin-photo-polaroid img,
-  .polaroid-video-box {
-    height: 140px;
+  .coords-badge {
+    font-size: 0.76rem;
+    padding: 0.35rem 0.75rem;
   }
+
+  .origin-photos-strip {
+    padding: 0.85rem 0.65rem;
+    margin-bottom: 1.1rem;
+  }
+
+  /* 2x2 Polaroid Izgara Sistemi - Mobilde 100% Uyumlu */
+  .origin-photos-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.75rem !important;
+    justify-items: center;
+    padding: 0.2rem 0;
+  }
+
+  .origin-photos-grid .origin-photo-polaroid {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: none !important;
+    padding: 6px 6px 10px !important;
+    margin: 0 !important;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45) !important;
+  }
+
+  .origin-photos-grid .origin-photo-polaroid img,
+  .origin-photos-grid .origin-photo-polaroid .polaroid-video-box {
+    height: 142px !important;
+    border-radius: 4px;
+  }
+
+  .origin-photo-polaroid:nth-child(1) { transform: rotate(-1.8deg) !important; }
+  .origin-photo-polaroid:nth-child(2) { transform: rotate(1.8deg) !important; }
+  .origin-photo-polaroid:nth-child(3) { transform: rotate(-1.5deg) !important; }
+  .origin-photo-polaroid:nth-child(4) { transform: rotate(1.8deg) !important; }
 
   .polaroid-caption {
-    font-size: 0.95rem;
+    font-size: 0.95rem !important;
+    margin-top: 5px !important;
   }
 
+  .map-wrapper {
+    height: 240px;
+    border-radius: 14px;
+  }
+
+  /* TFT Easter Egg */
   .tft-easter-card {
-    padding: 1.4rem 1.2rem;
+    padding: 1.4rem 1rem;
+    border-radius: 20px;
+  }
+
+  .tft-tacticians-grid {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .tactician-card {
+    width: 100%;
+    max-width: 290px;
+    padding: 1.1rem 1.2rem;
+  }
+
+  .tactician-duo-link {
+    transform: rotate(90deg);
+    padding: 0.2rem;
+    margin: -0.2rem 0;
   }
 
   .tft-stats-grid {
     grid-template-columns: 1fr;
+    gap: 0.6rem;
   }
 
+  .tft-quote {
+    font-size: 1.2rem;
+  }
+
+  /* Cinema / Gala Gecesi */
+  .cinema-section {
+    padding: 4rem 1rem;
+  }
+
+  .cinema-theater-card {
+    border-radius: 20px;
+  }
+
+  .cinema-player-wrapper {
+    min-height: 220px;
+    max-height: 480px;
+  }
+
+  .cinema-video {
+    max-height: 480px;
+  }
+
+  .cinema-play-btn {
+    width: 70px;
+    height: 70px;
+    font-size: 1.65rem;
+  }
+
+  .cinema-card-footer {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1.1rem 1.2rem;
+    gap: 0.8rem;
+  }
+
+  .cinema-meta-left {
+    justify-content: center;
+    gap: 0.45rem;
+  }
+
+  .cinema-pill {
+    font-size: 0.76rem;
+    padding: 0.32rem 0.7rem;
+  }
+
+  .cinema-theater-mode-btn {
+    width: 100%;
+    justify-content: center;
+    min-height: 44px;
+    font-size: 0.88rem;
+  }
+
+  /* Zaman Tüneli */
   .timeline-section {
     padding: 4rem 1rem;
   }
 
   .timeline-line {
-    left: 20px;
+    left: 18px;
   }
 
   .timeline-node {
-    left: 20px;
+    left: 18px;
   }
 
   .timeline-item {
     flex-direction: row !important;
-    padding-left: 45px;
+    padding-left: 42px;
+    gap: 0;
   }
 
   .timeline-content {
     width: 100%;
-    padding: 1.2rem;
+    padding: 1.15rem;
+    border-radius: 18px;
   }
 
   .timeline-photo-wrapper {
-    height: 190px;
+    height: 185px;
+    border-radius: 12px;
   }
 
-  .letter-card {
-    padding: 2.8rem 1.4rem 2rem;
+  .timeline-title {
+    font-size: 1.22rem;
   }
 
-  .letter-title {
-    font-size: 1.7rem;
+  .card-sound-pill {
+    min-height: 36px;
+    padding: 0.4rem 0.85rem;
+    font-size: 0.78rem;
   }
 
-  .letter-body p {
-    font-size: 0.98rem;
-    line-height: 1.7;
-    text-align: left;
+  /* Nostalji Galerisi */
+  .nostalgia-section {
+    padding: 4rem 1rem;
   }
 
-  .runaway-box {
-    padding: 2.5rem 1.2rem;
+  .nostalgia-filters {
+    gap: 0.5rem;
+    margin: -1rem auto 2rem;
   }
 
-  .runaway-arena {
-    min-height: 250px;
-    padding: 1rem;
-    gap: 1rem;
-  }
-
-  .btn-yes {
-    padding: 0.95rem 2rem;
-    font-size: 1.05rem;
-  }
-
-  .btn-no {
-    padding: 0.8rem 1.6rem;
-    font-size: 0.95rem;
-  }
-
-  .modal-dialog {
-    padding: 2.5rem 1.4rem;
+  .nostalgia-filter-btn {
+    padding: 0.5rem 1.1rem;
+    font-size: 0.82rem;
+    min-height: 40px;
   }
 
   .nostalgia-grid {
@@ -2610,8 +2745,205 @@ body.theater-mode-on .cinema-theater-card {
     gap: 1.5rem;
   }
 
+  .nostalgia-card {
+    padding: 1rem 1rem 1.3rem;
+    border-radius: 18px;
+  }
+
   .nostalgia-media-frame {
-    height: 260px;
+    height: 250px;
+    border-radius: 12px;
+  }
+
+  /* Mektup */
+  .letter-section {
+    padding: 4rem 1rem;
+  }
+
+  .letter-card {
+    padding: 2.2rem 1.25rem 1.8rem;
+    border-radius: 20px;
+  }
+
+  .letter-title {
+    font-size: 1.6rem;
+    margin-bottom: 1.1rem;
+  }
+
+  .letter-body p {
+    font-size: 0.96rem;
+    line-height: 1.72;
+    text-align: left;
+  }
+
+  .signature-font {
+    font-size: 2rem;
+  }
+
+  /* Kaçan Buton Arenası */
+  .runaway-section {
+    padding: 3.5rem 1rem 5rem;
+  }
+
+  .runaway-box {
+    padding: 2.4rem 1.1rem;
+    border-radius: 20px;
+  }
+
+  .runaway-question {
+    font-size: clamp(1.85rem, 6.5vw, 2.4rem);
+    margin: 0.8rem 0 0.4rem;
+  }
+
+  .runaway-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 1.8rem;
+  }
+
+  .runaway-arena {
+    min-height: 290px;
+    padding: 1rem 0.8rem;
+    border-radius: 16px;
+    position: relative;
+  }
+
+  .btn-yes {
+    position: absolute;
+    top: 36%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0.95rem 2rem;
+    font-size: 1.05rem;
+    min-height: 52px;
+    white-space: nowrap;
+    max-width: 90%;
+  }
+
+  .btn-no {
+    padding: 0.8rem 1.6rem;
+    font-size: 0.95rem;
+    min-height: 48px;
+    white-space: nowrap;
+  }
+
+  /* Modallar & Lightbox */
+  .modal-dialog {
+    padding: 2.2rem 1.2rem;
+    border-radius: 20px;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .celebration-title {
+    font-size: 1.55rem;
+  }
+
+  .celebration-message {
+    font-size: 0.94rem;
+    line-height: 1.65;
+  }
+
+  .whatsapp-btn {
+    min-height: 50px;
+    font-size: 0.96rem;
+  }
+
+  .lightbox-backdrop {
+    padding: 0.8rem;
+  }
+
+  .lightbox-dialog img,
+  .lightbox-dialog video {
+    max-height: 70vh;
+    border-radius: 12px;
+  }
+
+  .lightbox-close {
+    position: fixed;
+    top: max(16px, env(safe-area-inset-top));
+    right: max(16px, env(safe-area-inset-right));
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    z-index: 300;
+  }
+
+  /* Footer */
+  .site-footer {
+    padding: 2.5rem 1.2rem calc(2.5rem + env(safe-area-inset-bottom));
   }
 }
+
+/* ========================================================================
+   DAR EKRANLI MOBİL CİHAZLAR (≤ 480px: iPhone 13 mini, SE, Android 360px)
+   ======================================================================== */
+@media (max-width: 480px) {
+  .gate-card {
+    padding: 2rem 1.2rem;
+    border-radius: 20px;
+  }
+
+  .gate-header h1 {
+    font-size: 1.55rem;
+  }
+
+  .gate-header p {
+    font-size: 0.88rem;
+    margin-bottom: 1.4rem;
+  }
+
+  .input-wrapper {
+    padding: 0.35rem 0.4rem 0.35rem 0.85rem;
+  }
+
+  .input-wrapper input {
+    font-size: 0.92rem;
+  }
+
+  .gate-tools {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .tool-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .origin-photos-grid .origin-photo-polaroid img,
+  .origin-photos-grid .origin-photo-polaroid .polaroid-video-box {
+    height: 125px !important;
+  }
+
+  .polaroid-caption {
+    font-size: 0.88rem !important;
+  }
+
+  .tft-section-subhead {
+    font-size: 0.68rem;
+  }
+
+  .runaway-box {
+    padding: 2rem 0.9rem;
+  }
+
+  .runaway-arena {
+    min-height: 280px;
+    padding: 0.8rem 0.5rem;
+  }
+
+  .btn-yes {
+    padding: 0.85rem 1.7rem;
+    font-size: 0.98rem;
+  }
+}
+
 
