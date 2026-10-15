@@ -1,0 +1,6 @@
+# Test screenshots
+screenshot_*.png
+.cdp*
+.chrome_test_profile/
+__pycache__/
+*.log

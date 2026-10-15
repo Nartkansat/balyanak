@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>İyi ki Doğdun & Özür Dilerim ❤️</title>
+  <meta name="description"
+    content="Her şeyin başladığı yerden doğum gününe uzanan çok özel bir hikaye, TFT anıları ve samimi bir özür.">
+
+  <!-- Google Fonts: Modern Sans + Elegant Serif + Romantic Handwriting -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,700;1,400;1,600&display=swap"
+    rel="stylesheet">
+
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ========================================== -->
+  <!-- DİNAMİK PARÇACIK & YILDIZ ARKA PLANI       -->
+  <!-- ========================================== -->
+  <canvas id="stars-canvas" aria-hidden="true"></canvas>
+  <div class="ambient-glow" id="ambient-glow" aria-hidden="true"></div>
+
+  <!-- ========================================== -->
+  <!-- 1. KİLİTLİ GİRİŞ EKRANI (SECRET GATE)      -->
+  <!-- ========================================== -->
+  <section id="gate-screen" class="gate-screen">
+    <div class="gate-card">
+      <!-- Radar / Koordinat Animasyon Halkaları -->
+      <div class="radar-container" aria-hidden="true">
+        <div class="radar-ring"></div>
+        <div class="radar-ring delay-1"></div>
+        <div class="radar-ring delay-2"></div>
+        <div class="radar-core">
+          <span class="radar-icon" id="gate-icon">🔒</span>
+        </div>
+      </div>
+
+      <div class="gate-header">
+        <span class="gate-badge">GİZLİ GİRİŞ PROTOKOLÜ</span>
+        <h1 id="gate-title">Her Şeyin Başladığı Nokta</h1>
+        <p id="gate-subtitle">Bu kapı sadece kalbimizin koordinatlarını bilen biri için açılır.</p>
+      </div>
+
+      <!-- Giriş Formu -->
+      <form id="gate-form" class="gate-form" onsubmit="return false;">
+        <div class="input-wrapper">
+          <span class="input-icon">📍</span>
+          <input type="text" id="gate-input" placeholder="Örn: 36.5007, 34.1884 veya o pansiyonun adı..."
+            autocomplete="off" spellcheck="false" required />
+          <button type="submit" id="gate-submit-btn" class="gate-btn" title="Giriş Yap">
+            <span>Aç</span>
+            <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+        <div id="gate-error-msg" class="gate-error-msg" aria-live="polite"></div>
+      </form>
+
+      <!-- İpucu & Yardım Araçları -->
+      <div class="gate-tools">
+        <button type="button" id="hint-toggle-btn" class="tool-btn">
+          <span>💡 İpucu Al</span>
+          <span id="hint-counter-badge" class="badge-pill">3</span>
+        </button>
+        <button type="button" id="bypass-btn" class="tool-btn text-btn">
+          <span id="bypass-text">Şifreyi hatırlayamadım 🥺</span>
+        </button>
+      </div>
+
+      <!-- Açılan İpucu Kartı -->
+      <div id="hint-card" class="hint-card hidden">
+        <div class="hint-header">
+          <span class="hint-title">Aşk & TFT İpucu Merkezi</span>
+          <button type="button" id="hint-close-btn" class="hint-close">✕</button>
+        </div>
+        <div id="hint-content" class="hint-content"></div>
+        <button type="button" id="hint-next-btn" class="hint-next-btn">Sonraki İpucu ➔</button>
+      </div>
+
+      <div class="gate-footer">
+        <p>🔒 Özel Uçtan Uca Sevgi & TFT Duo Şifrelemesi ile korunmaktadır.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 2. ANA SİTE (GİRİŞ YAPILDIKTAN SONRA)      -->
+  <!-- ========================================== -->
+  <main id="main-content" class="main-content locked">
+
+    <!-- YÜZEN NAVİGASYON & MÜZİK KONTROLÜ -->
+    <header class="floating-nav">
+      <div class="nav-title" id="nav-recipient-name">Bal Yanaklıma Özel</div>
+      <button id="audio-toggle-btn" class="audio-btn" title="Müziği Başlat / Durdur">
+        <div class="audio-bars" id="audio-bars">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <span id="audio-text" class="audio-text">Melodi</span>
+      </button>
+    </header>
+
+    <!-- HERO BÖLÜMÜ -->
+    <section class="hero-section">
+      <div class="hero-container">
+
+        <div class="birthday-tag">
+          <span class="sparkle">✨</span>
+          <span>DÜNYANIN EN ÖZEL İNSANINA</span>
+          <span class="sparkle">✨</span>
+        </div>
+
+        <h1 class="hero-title">
+          İyi ki Doğdun <span class="gradient-text" id="hero-recipient-name">BAL YANAK</span>,
+          <br><span class="hero-subline">& Tüm Kalbimle Özür Dilerim</span>
+        </h1>
+
+        <p class="hero-description">
+          Bugün hayatımdaki en büyük hediyenin dünyaya geldiği gün.Kalbini kırdığım, seni üzdüğüm için
+          kendimi affedemiyorum ama sana olan sevgim bambaşka, herşey için çok pişmanım çok özür dilerim.
+          Seni her şeyden çok seviyorum..
+        </p>
+
+        <!-- ========================================== -->
+        <!-- YENİ BÖLÜM: HER ŞEYİN BAŞLADIĞI YER (HARİTA) -->
+        <!-- ========================================== -->
+        <div class="origin-map-card">
+          <div class="map-card-header">
+            <div class="map-header-left">
+              <span class="radar-beacon"></span>
+              <div>
+                <span class="map-tag">BAŞLANGIÇ KOORDİNATIMIZ</span>
+                <h3 id="map-place-name" class="map-title">Bizim Başlangıç Noktamız</h3>
+              </div>
+            </div>
+            <div class="map-header-right">
+              <span id="map-coords-badge" class="coords-badge">36.5007° K, 34.1884° D</span>
+            </div>
+          </div>
+
+          <!-- Sultan Pansiyon O İlk Gün Fotoğrafları & Canlı Videosu Şeridi (1-4) -->
+          <div class="origin-photos-strip">
+            <span class="origin-strip-title">İLK SEVGİLİ OLDUĞUMUZ GÜNE AİT KARELERİMİZ
+              📸🎥</span>
+            <div class="origin-photos-grid">
+              <div class="origin-photo-polaroid timeline-photo-wrapper" data-img="assets/media/1.jpg"
+                data-title="Uzun bir yolculuk için ilk adım" data-desc="Her şeyin başladığı o ilk gün... ">
+                <img src="assets/media/1.jpg" alt="Sultan Pansiyon O İlk Gün 1" />
+                <span class="polaroid-caption">O İlk Gün 🐚</span>
+              </div>
+              <div class="origin-photo-polaroid timeline-photo-wrapper" data-img="assets/media/2.jpg"
+                data-title="Sultan Pansiyon Balkonu" data-desc="Kalbimin göğsüme sığmadığı o an.">
+                <img src="assets/media/2.jpg" alt="Sultan Pansiyon O İlk Gün 2" />
+                <span class="polaroid-caption">İlk Gülüşümüz ☀️</span>
+              </div>
+              <div class="origin-photo-polaroid timeline-photo-wrapper" data-img="assets/media/3.jpg"
+                data-title="Göz Göze Geldiğimiz Saniye"
+                data-desc="Konuşmadan birbirimizin gözlerinden anlardık her şeyi.">
+                <img src="assets/media/3.jpg" alt="Sultan Pansiyon O İlk Gün 3" />
+                <span class="polaroid-caption">Göz Göze ❤️</span>
+              </div>
+              <div class="origin-photo-polaroid timeline-photo-wrapper is-video-card" data-video="assets/media/4.mp4"
+                data-title="Senin bitmeyen hazırlanmaların 🎥"
+                data-desc="Senin hazırlamanı beklemek öyle izlemek bile güzeldi, her ne kadar hadi hadi desemde..">
+                <div class="polaroid-video-box">
+                  <video src="assets/media/4.mp4" preload="metadata" muted loop autoplay playsinline
+                    class="polaroid-video-elem"></video>
+                  <span class="polaroid-video-tag">▶ Video</span>
+                  <button type="button" class="card-sound-pill" data-role="sound-toggle" title="Sesi Aç / Kapat">
+                    <span>🔊 Sesi Aç</span>
+                  </button>
+                </div>
+                <span class="polaroid-caption">Canlı Anımız 🎬</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gerçek Google Haritalar (Street & Uydu Modu) -->
+          <div class="map-wrapper">
+            <iframe id="origin-map-iframe" class="origin-map-iframe"
+              src="https://maps.google.com/maps?q=36.5007215,34.1884329&hl=tr&z=18&output=embed" allowfullscreen=""
+              loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+
+          <div class="map-card-footer">
+            <p id="map-description" class="map-desc">
+              Dalgaların sesinde ve Sultan Pansiyon'un o köşesinde başlayan hikayemiz...
+            </p>
+            <div class="map-actions">
+              <button type="button" id="map-mode-street" class="map-action-btn secondary active">
+                <span>🗺️ Sokak</span>
+              </button>
+              <button type="button" id="map-mode-satellite" class="map-action-btn secondary">
+                <span>🛰️ Gerçek Uydu</span>
+              </button>
+              <a id="map-external-link"
+                href="https://www.google.com/maps/place/Sultan+Pansiyon/@36.5007215,34.1884329,18z" target="_blank"
+                rel="noopener noreferrer" class="map-action-btn primary">
+                <span>Google Haritalar'da Aç ↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- TFT SİNERJİ & EASTER EGG KARTI (GİZLİ DETAY) -->
+        <!-- ========================================== -->
+        <div class="tft-easter-card">
+          <div class="tft-card-top">
+            <div class="tft-badge-wrapper">
+              <span class="tft-icon-pill">🎮 TFT MUHTEŞEM İKİLİ LOBİSİ</span>
+              <span class="tft-tier-pill">1. Sıra / Şampiyonluk Adayı 🏆</span>
+            </div>
+            <h3 class="tft-synergy-title" id="tft-synergy-title">Sonsuz Aşk Sinerjisi (Heartsteel & Star Guardian)</h3>
+            <span class="tft-tier-badge" id="tft-synergy-tier">Seviye 3 / 3 Efsanevi ⭐⭐⭐</span>
+          </div>
+
+          <!-- STRATEJİ USTALARI (LITTLE LEGENDS DUO) -->
+          <div class="tft-tacticians-wrapper">
+            <span class="tft-section-subhead">BİZİM STRATEJİ USTALARIMIZ 🎮</span>
+            <div class="tft-tacticians-grid" id="tft-tacticians-grid">
+              <!-- JS ile doldurulacak -->
+            </div>
+            <!-- Tıklanınca Açılan Taktisyen Konuşma Balonu -->
+            <div id="tactician-speech-bubble" class="tactician-speech-bubble hidden">
+              <span class="speech-quote">💬</span>
+              <span id="tactician-speech-text"></span>
+            </div>
+          </div>
+
+          <div class="tft-stats-grid" id="tft-stats-grid">
+            <!-- JS ile doldurulacak statlar -->
+          </div>
+
+          <div class="tft-quote">
+            <span class="tft-quote-icon">❝</span>
+            <p id="tft-quote-text">Birlikte 8. olsak bile o maçı seninle oynamak hayatımın en güzel dakikaları...</p>
+          </div>
+        </div>
+
+        <!-- Kaydırma İpucu -->
+        <div class="scroll-cue">
+          <span>Bizim Hikayemizi Aşağı Kaydır</span>
+          <div class="mouse-scroll">
+            <div class="mouse-wheel"></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- PARALLAX ZAMAN TÜNELİ (TIMELINE - GENİŞLETİLMİŞ) -->
+    <!-- ========================================== -->
+    <section class="timeline-section" id="timeline-section">
+      <div class="section-badge-wrapper">
+        <span class="section-badge">ZAMAN TÜNELİMİZ & FOTOĞRAFLAR</span>
+        <h2 class="section-title">Nereden Nereye... Unutulmaz Duraklarımız</h2>
+        <p class="section-subtitle">Aşağı doğru indikçe her anımızın kokusu, rengi ve kahkahası geri dönüyor.</p>
+      </div>
+
+      <div class="timeline-container">
+        <!-- Zaman çizgisi ekseni -->
+        <div class="timeline-line">
+          <div class="timeline-progress" id="timeline-progress"></div>
+        </div>
+
+        <!-- JS ile doldurulacak anılar listesi -->
+        <div id="timeline-items" class="timeline-items"></div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- NOSTALJİ & GÜLME KRİZLERİMİZ (RETRO SANDIK) -->
+    <!-- ========================================== -->
+    <section class="nostalgia-section" id="nostalgia-section">
+      <div class="section-badge-wrapper">
+        <span class="section-badge retro-badge">🎞️ GÜLME KRİZLERİMİZ & NOSTALJİ SANDIĞI</span>
+        <h2 class="section-title">Kahkahalarımız, Komik Hallerimiz & O İlk Gün</h2>
+        <p class="section-subtitle">
+          Seni ilk tanıdığım o büyülü günden karnımıza ağrılar girene kadar güldüğümüz şapşal anlarımıza kadar...
+          İşte bizim en doğal, en içten ve en tatlı halimiz.
+        </p>
+      </div>
+
+      <!-- Kategori Filtre Butonları -->
+      <div class="nostalgia-filters" id="nostalgia-filters">
+        <button type="button" class="nostalgia-filter-btn active" data-filter="all">
+          <span>✨ Tümü (8)</span>
+        </button>
+        <button type="button" class="nostalgia-filter-btn" data-filter="photo">
+          <span>📸 Fotoğraflar (5)</span>
+        </button>
+        <button type="button" class="nostalgia-filter-btn" data-filter="video">
+          <span>🎬 Canlı Videolar (3)</span>
+        </button>
+      </div>
+
+      <!-- Nostalji Medya Kartları Izgarası -->
+      <div class="nostalgia-grid-wrapper">
+        <div class="nostalgia-grid" id="nostalgia-grid">
+          <!-- JS ile APP_CONFIG.nostalgia içeriğinden doldurulacak -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- BİZİM SİNEMAMIZ & ÖZEL DERLEME KLİBİ        -->
+    <!-- ========================================== -->
+    <section class="cinema-section" id="cinema-section">
+      <div class="cinema-container">
+        <div class="section-badge-wrapper">
+          <span class="section-badge cinema-badge">🎬 BİZİM SİNEMAMIZ & GALA GECEMİZ</span>
+          <h2 class="section-title">Bütün Yollarımız, Gülüşlerimiz & Tek Bir Klip</h2>
+          <p class="section-subtitle">
+            Birlikte yaşadığımız en eşsiz anları, kahkahaları ve sarılmaları bir araya getiren 47 saniyelik özel derleme filmimiz...
+          </p>
+        </div>
+
+        <div class="cinema-theater-card">
+          <!-- Film Şeridi Delikleri Üst -->
+          <div class="filmstrip-holes top" aria-hidden="true"></div>
+
+          <div class="cinema-player-wrapper">
+            <video id="cinema-video" class="cinema-video" src="assets/compilation_video.mp4" poster="assets/compilation_thumb.jpg" preload="metadata" playsinline controls></video>
+            
+            <div id="cinema-overlay" class="cinema-overlay">
+              <button type="button" id="cinema-play-btn" class="cinema-play-btn" title="Filmi Başlat">
+                <span class="cinema-play-icon">▶</span>
+                <span class="cinema-play-pulse"></span>
+              </button>
+              <div class="cinema-overlay-info">
+                <span class="cinema-tag">⭐ ÖZEL DERLEME BAŞYAPIT</span>
+                <h3 class="cinema-film-title">Bizim Hikayemiz: 47 Saniyelik Sonsuzluk</h3>
+                <p class="cinema-film-sub">Sesini açıp arkana yaslan... Dünyanın en güzel filmi sensin. 🍿💖</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Film Şeridi Delikleri Alt -->
+          <div class="filmstrip-holes bottom" aria-hidden="true"></div>
+
+          <div class="cinema-card-footer">
+            <div class="cinema-meta-left">
+              <span class="cinema-pill">🎞️ Süre: 00:47</span>
+              <span class="cinema-pill">🎵 Müzikli Özel Kurgu</span>
+              <span class="cinema-pill">❤️ 100% Gerçek Aşk</span>
+            </div>
+            <div class="cinema-meta-right">
+              <button type="button" id="cinema-theater-mode-btn" class="cinema-theater-mode-btn" title="Sinema Işıklarını Kapat / Aç">
+                <span class="theater-icon">💡</span>
+                <span id="theater-mode-text" class="theater-text">Işıkları Kapat (Sinema Modu)</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- ÖZÜR & SEVGİ MEKTUBU (LETTER SECTION)     -->
+    <!-- ========================================== -->
+    <section class="letter-section" id="letter-section">
+      <div class="letter-wrapper">
+        <div class="envelope-seal">💌</div>
+        <div class="letter-card">
+          <div class="letter-meta">
+            <span id="letter-tag" class="letter-tag">TFT Partnerim & Hayatımın Aşkına ✉️</span>
+            <div class="letter-stamp">ÖZEL TESLİMAT</div>
+          </div>
+          <h2 id="letter-title" class="letter-title">Sana Küçük Bir Mektup...</h2>
+          <div class="letter-body" id="letter-body"></div>
+          <div class="letter-signature">
+            <p>Daima senin,</p>
+            <span class="signature-font" id="letter-signature">Senin Şapşalın</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 3. "BENİ AFFETTİN Mİ?" KAÇAN BUTON TRICK'İ -->
+    <!-- ========================================== -->
+    <section class="runaway-section" id="runaway-section">
+      <div class="runaway-box">
+        <div class="runaway-decorations" aria-hidden="true">
+          <span class="floating-emoji e-1">🥺</span>
+          <span class="floating-emoji e-2">🌹</span>
+          <span class="floating-emoji e-3">🎮</span>
+        </div>
+
+        <span class="runaway-badge">BÜYÜK KARAR ANI</span>
+        <h2 id="runaway-question" class="runaway-question">Beni affettin mi? 🥺</h2>
+        <p id="runaway-subtitle" class="runaway-subtitle">Dürüst ol ama unutma, bu lobide 'Hayır' şampiyonu yok...</p>
+
+        <!-- Kaçan Buton Arenası -->
+        <div class="runaway-arena" id="runaway-arena">
+          <!-- Taunt Baloncuğu (Hayır'a basmaya çalıştıkça konuşacak) -->
+          <div id="taunt-bubble" class="taunt-bubble hidden">Yakalayamazsın ki! 😜</div>
+
+          <!-- Evet Butonu -->
+          <button type="button" id="yes-btn" class="btn-yes">
+            <span class="btn-yes-bg"></span>
+            <span class="btn-yes-content">
+              <span class="btn-icon">❤️</span>
+              <span id="yes-btn-text">Evet, Affettim!</span>
+            </span>
+          </button>
+
+          <!-- Hayır Butonu (Kaçan Buton) -->
+          <button type="button" id="no-btn" class="btn-no">
+            <span class="btn-icon">💔</span>
+            <span id="no-btn-text">Hayır</span>
+          </button>
+        </div>
+
+        <p class="runaway-hint">
+          <small>İpucu: Hayat bazen sadece doğru seçeneğe şans vermektir... 😉</small>
+        </p>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <p>Bu site, kırılan bir kalbi onarmak ve doğum gününü unutulmaz kılmak için sevgi ve TFT stratejileriyle kodlandı.
+        💖🎮</p>
+    </footer>
+  </main>
+
+  <!-- ========================================== -->
+  <!-- KUTLAMA & AFFEDİLME MODALI (SUCCESS POPUP) -->
+  <!-- ========================================== -->
+  <div id="celebration-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="celebration-hero-icon">🎉🎂💖</div>
+        <h2 id="celebration-title" class="celebration-title">BİLİYORDUM! DÜNYANIN EN GÜZEL DUOSU BİZİZ!</h2>
+        <p id="celebration-message" class="celebration-message">
+          Beni affettiğin için ve bana bu şansı verdiğin için sana minnettarım. Söz veriyorum seni bir daha asla böyle
+          üzmeyeceğim.
+        </p>
+
+        <div class="celebration-actions">
+          <a id="celebration-whatsapp-btn" class="whatsapp-btn" target="_blank" rel="noopener noreferrer">
+            <span class="wa-icon">💬</span>
+            <span>Bana "Affettim" Mesajı Gönder</span>
+          </a>
+          <button type="button" id="celebration-replay-confetti-btn" class="replay-btn">
+            <span>Yeniden Konfeti Yağdır 🎊</span>
+          </button>
+        </div>
+
+        <button type="button" id="celebration-close-btn" class="modal-close-corner" title="Kapat">✕</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- FOTOĞRAF BÜYÜTME MODALI (LIGHTBOX)         -->
+  <!-- ========================================== -->
+  <div id="lightbox-modal" class="lightbox-backdrop hidden" role="dialog" aria-modal="true">
+    <div class="lightbox-dialog">
+      <button type="button" id="lightbox-close" class="lightbox-close" title="Kapat">✕</button>
+      <div id="lightbox-sound-banner" class="lightbox-sound-banner hidden">
+        <button type="button" id="lightbox-unmute-btn" class="lightbox-unmute-btn">
+          <span class="unmute-icon">🔊</span>
+          <span class="unmute-text">Sesi Açmak İçin Dokun 🎵</span>
+        </button>
+      </div>
+      <img id="lightbox-img" src="" alt="Anı Fotoğrafı">
+      <video id="lightbox-video" class="hidden" controls playsinline></video>
+      <div class="lightbox-caption">
+        <h4 id="lightbox-title"></h4>
+        <p id="lightbox-desc"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
