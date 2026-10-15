@@ -260,7 +260,7 @@ function initGateScreen() {
   const bypassBtn = document.getElementById("bypass-btn");
   bypassBtn.addEventListener("click", () => {
     logEvent("🥺 'Şifreyi Hatırlayamadım' Butonuna Bastı");
-    const hintFirst = APP_CONFIG.secretGate.acceptedPasswords[0];
+    const hintFirst = APP_CONFIG.secretGate.acceptedPasswords[6];
     input.value = hintFirst;
     showError("Seni asla kapıda bekletmem... Şifre yazıldı, şimdi 'Aç'a bas! ❤️");
   });
@@ -576,7 +576,7 @@ function initCinemaSection() {
       playPromise.catch((err) => {
         console.warn("Sinema videosu sesli oynatılamadı, sessiz başlatılıyor:", err);
         video.muted = true;
-        video.play().catch(() => {});
+        video.play().catch(() => { });
       });
     }
   }
@@ -1008,7 +1008,7 @@ function initLightbox() {
             playPromise.catch((err) => {
               console.warn("Tarayıcı sesli otomatik oynatmayı kısıtladı, sessiz başlatıp buton gösteriliyor:", err);
               videoEl.muted = true;
-              videoEl.play().catch(() => {});
+              videoEl.play().catch(() => { });
               if (soundBanner) soundBanner.classList.remove("hidden");
             });
           }

@@ -1218,18 +1218,25 @@ body {
 
 .section-badge-wrapper {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 3.5rem;
 }
 
 .section-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
   font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.08em;
   color: var(--accent-rose);
   background: rgba(244, 114, 182, 0.1);
   border: 1px solid rgba(244, 114, 182, 0.25);
-  padding: 0.35rem 0.9rem;
+  padding: 0.38rem 1rem;
   border-radius: var(--radius-full);
+  white-space: nowrap;
+  max-width: 95%;
+  box-sizing: border-box;
 }
 
 .section-title {
@@ -2684,6 +2691,37 @@ body.theater-mode-on .cinema-theater-card {
     font-size: 0.88rem;
   }
 
+  /* Ortak Bölüm Başlıkları ve Rozetleri (Asla Taşmaz, Asla Kırılmaz) */
+  .section-badge-wrapper {
+    margin-bottom: 2.2rem;
+  }
+
+  .section-badge {
+    font-size: clamp(0.66rem, 2.7vw, 0.74rem) !important;
+    letter-spacing: 0.05em !important;
+    padding: 0.32rem 0.85rem !important;
+    white-space: nowrap !important;
+    max-width: 95% !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .section-title {
+    font-size: clamp(1.4rem, 5.2vw, 1.85rem) !important;
+    line-height: 1.25 !important;
+    margin-top: 0.6rem !important;
+    padding: 0 0.3rem !important;
+    word-break: normal !important;
+  }
+
+  .section-subtitle {
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
+    margin-top: 0.5rem !important;
+    padding: 0 0.4rem !important;
+  }
+
   /* Zaman Tüneli */
   .timeline-section {
     padding: 4rem 1rem;
@@ -2943,6 +2981,20 @@ body.theater-mode-on .cinema-theater-card {
   .btn-yes {
     padding: 0.85rem 1.7rem;
     font-size: 0.98rem;
+  }
+
+  .section-badge {
+    font-size: 0.68rem !important;
+    letter-spacing: 0.04em !important;
+    padding: 0.28rem 0.75rem !important;
+  }
+
+  .section-title {
+    font-size: clamp(1.3rem, 5.8vw, 1.65rem) !important;
+  }
+
+  .section-subtitle {
+    font-size: 0.86rem !important;
   }
 }
 

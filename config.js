@@ -316,7 +316,7 @@ const APP_CONFIG = {
     {
       id: "nostalgia-1",
       type: "photo",
-      title: "Seninle ilk buluştuğumuz Gün 🌿",
+      title: "Seninle İlk Buluştuğumuz Gün 🌿",
       date: "O İlk Masum Tanışma",
       badge: "İlk Bakış & Milat 💫",
       sticker: "O İLK GÜN",
