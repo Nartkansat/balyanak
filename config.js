@@ -5,6 +5,14 @@
 // ========================================================================
 
 const APP_CONFIG = {
+  // 0. GOOGLE SHEETS LOG TAKİP AYARLARI
+  // Sevgilinizin hangi butona bastığını canlı takip etmek için:
+  analytics: {
+    enabled: true,
+    // Google Sheets Apps Script Web App URL'nizi buraya tırnakların içine yapıştırın:
+    googleSheetsUrl: ""
+  },
+
   // 1. KİŞİSEL BİLGİLER
   recipientName: "Bal Yanaklı",       // Sevgilinizin adı / Hitap
   senderName: "Senin Şapşalın",    // Gönderen / İmza

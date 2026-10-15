@@ -1,8 +1,40 @@
 // ========================================================================
-// 🚀 UYGULAMA MANTIĞI & ETKİLEŞİMLER (APP.JS)
+// 📊 GOOGLE SHEETS LOG SİSTEMİ (ANALYTICS & ACTIVITY TRACKER)
 // ========================================================================
+let logEventDebounce = {};
+
+function logEvent(eventName, detail = "", extra = "") {
+  if (!APP_CONFIG.analytics || !APP_CONFIG.analytics.enabled) return;
+  const sheetUrl = (APP_CONFIG.analytics.googleSheetsUrl || "").trim();
+  if (!sheetUrl || !sheetUrl.startsWith("http")) return;
+
+  const now = Date.now();
+  if (logEventDebounce[eventName] && now - logEventDebounce[eventName] < 800) {
+    return;
+  }
+  logEventDebounce[eventName] = now;
+
+  const payload = {
+    event: eventName,
+    detail: detail,
+    extra: extra || navigator.userAgent.slice(0, 60),
+    pageTime: new Date().toLocaleTimeString("tr-TR")
+  };
+
+  try {
+    fetch(sheetUrl, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    }).catch(() => {});
+  } catch (err) {}
+}
 
 document.addEventListener("DOMContentLoaded", () => {
+  logEvent("🌐 Site Açıldı", window.location.search || "Ana Sayfa");
   initStarsCanvas();
   initGateScreen();
   initAmbientAudio();
@@ -146,8 +178,10 @@ function initGateScreen() {
     });
 
     if (isCorrect) {
+      logEvent("🔓 Kapı Başarıyla Açıldı!", val);
       unlockGate();
     } else {
+      logEvent("❌ Hatalı Şifre Denendi", val);
       showError("Bu koordinat kalbimizi bulamadı... İpuçlarına göz atmak ister misin? 🥺");
       input.classList.add("shake");
       setTimeout(() => input.classList.remove("shake"), 600);
@@ -215,11 +249,13 @@ function initGateScreen() {
 
   function displayHint(index) {
     hintContent.textContent = hints[index] || "İlk baktığımız o yeri hatırla...";
+    logEvent("💡 İpucu Açıldı", `İpucu #${index + 1}: ${(hints[index] || "").slice(0, 40)}...`);
   }
 
   // Bypass
   const bypassBtn = document.getElementById("bypass-btn");
   bypassBtn.addEventListener("click", () => {
+    logEvent("🥺 'Şifreyi Hatırlayamadım' Butonuna Bastı");
     const hintFirst = APP_CONFIG.secretGate.acceptedPasswords[0];
     input.value = hintFirst;
     showError("Seni asla kapıda bekletmem... Şifre yazıldı, şimdi 'Aç'a bas! ❤️");
@@ -303,6 +339,7 @@ function populateContent() {
 
         // Tıklanınca konuşma balonu aç ve zıplat
         tCard.addEventListener("click", () => {
+          logEvent("🎮 TFT Şampiyonuna Dokundu", t.name);
           document.querySelectorAll(".tactician-card").forEach(c => c.classList.remove("active-poke"));
           tCard.classList.add("active-poke");
 
@@ -523,6 +560,7 @@ function initCinemaSection() {
     overlay.classList.add("hidden");
     video.muted = false;
     video.volume = 1.0;
+    logEvent("🎬 47sn Derleme Klibini Başlattı", "Bizim Sinemamız");
 
     if (audioSynth && audioSynth.isPlaying) {
       audioSynth.wasPlayingBeforeVideo = true;
@@ -575,6 +613,7 @@ function initCinemaSection() {
 
   function toggleTheaterMode() {
     const isOn = document.body.classList.toggle("theater-mode-on");
+    logEvent("💡 Sinema Modu (Işıklar)", isOn ? "Işıklar Kapatıldı" : "Işıklar Açıldı");
     if (isOn) {
       theaterText.textContent = "Işıkları Aç (Normal Mod)";
       const cinemaSection = document.getElementById("cinema-section");
@@ -687,6 +726,8 @@ function initRunawayButton() {
     const tauntText = taunts[tauntIdx % taunts.length];
     tauntIdx++;
 
+    logEvent("🏃‍♂️ Hayır'a Basmaya Çalıştı", `Kaçış #${tauntIdx}: "${tauntText}"`);
+
     tauntBubble.textContent = tauntText;
     tauntBubble.classList.remove("hidden");
 
@@ -760,10 +801,12 @@ function initCelebrationModal() {
   });
 
   replayBtn.addEventListener("click", () => {
+    logEvent("🎊 Yeniden Konfeti Yağdırdı");
     triggerConfettiShower();
   });
 
   function openCelebration() {
+    logEvent("🎉 EVET, AFFETTİM! BUTONUNA BASTI ❤️", "Büyük Karar: Affetti!");
     modal.classList.remove("hidden");
     triggerConfettiShower();
   }
@@ -898,6 +941,8 @@ function initLightbox() {
       const isVideo = !!wrapper.dataset.video;
       const title = wrapper.dataset.title || "";
       const desc = wrapper.dataset.desc || "";
+
+      logEvent("🔍 Anı Büyütüldü", `${isVideo ? "Video" : "Fotoğraf"}: ${title}`);
 
       titleEl.textContent = title;
       descEl.textContent = desc;
