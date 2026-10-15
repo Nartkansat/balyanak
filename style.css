@@ -2629,9 +2629,25 @@ body.theater-mode-on .cinema-theater-card {
   }
 
   .tactician-duo-link {
-    transform: rotate(90deg);
-    padding: 0.2rem;
-    margin: -0.2rem 0;
+    transform: none !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.5rem 0;
+    margin: 0.3rem 0;
+  }
+
+  .duo-link-text {
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: var(--accent-rose);
+    letter-spacing: 0.12em;
+    background: rgba(244, 114, 182, 0.12);
+    border: 1px solid rgba(244, 114, 182, 0.3);
+    padding: 0.2rem 0.75rem;
+    border-radius: var(--radius-full);
+    white-space: nowrap;
   }
 
   .tft-stats-grid {
