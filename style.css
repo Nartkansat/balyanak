@@ -1659,6 +1659,338 @@ body {
 }
 
 /* ========================================================================
+   RESMİ BAL YANAK KÖŞESİ (DÜNYANIN EN TATLI YANAĞI)
+   ======================================================================== */
+.balyanak-section {
+  padding: 6rem 1.2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.balyanak-badge {
+  color: #f59e0b !important;
+  background: rgba(245, 158, 11, 0.15) !important;
+  border-color: rgba(245, 158, 11, 0.4) !important;
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.25);
+}
+
+.balyanak-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.8rem;
+  margin-bottom: 3rem;
+}
+
+.balyanak-card {
+  background: linear-gradient(145deg, rgba(30, 24, 40, 0.85) 0%, rgba(20, 16, 28, 0.95) 100%);
+  border: 1.5px solid rgba(251, 191, 36, 0.3);
+  border-radius: var(--radius-lg);
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45), 0 0 25px rgba(245, 158, 11, 0.08);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+  cursor: pointer;
+}
+
+.balyanak-card:hover {
+  transform: translateY(-8px) scale(1.015);
+  border-color: #fbbf24;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.65), 0 0 35px rgba(245, 158, 11, 0.3);
+}
+
+.balyanak-card-tape {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 20px;
+  background: rgba(251, 191, 36, 0.35);
+  backdrop-filter: blur(4px);
+  border-radius: 3px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
+.balyanak-img-frame {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: #090a12;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 1.1rem;
+}
+
+.balyanak-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.balyanak-card:hover .balyanak-img {
+  transform: scale(1.05);
+}
+
+.balyanak-badge-pill {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(251, 191, 36, 0.4);
+  color: #fef08a;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-full);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.balyanak-zoom-pill {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+  opacity: 0.85;
+  transition: opacity 0.2s, background 0.2s;
+}
+
+.balyanak-card:hover .balyanak-zoom-pill {
+  opacity: 1;
+  background: #fbbf24;
+  color: #0b0e1e;
+  border-color: #fbbf24;
+}
+
+.balyanak-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0.6rem;
+}
+
+.balyanak-stat-tag {
+  display: inline-block;
+}
+
+.balyanak-stat-tag span {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-full);
+}
+
+.balyanak-card-title {
+  font-family: var(--font-sans);
+  font-size: 1.12rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.35;
+  margin-top: 0.2rem;
+}
+
+.balyanak-card-praise {
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.6;
+  flex: 1;
+}
+
+.balyanak-quote-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.4rem;
+  background: rgba(251, 191, 36, 0.08);
+  border-left: 3px solid #fbbf24;
+  padding: 0.55rem 0.8rem;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  margin: 0.4rem 0;
+}
+
+.balyanak-quote-icon {
+  font-size: 1.1rem;
+  color: #fbbf24;
+  line-height: 1;
+  opacity: 0.8;
+}
+
+.balyanak-quote-text {
+  font-family: var(--font-hand);
+  font-size: 1.15rem;
+  color: #fef08a;
+  line-height: 1.3;
+}
+
+.balyanak-card-action {
+  margin-top: 0.4rem;
+}
+
+.balyanak-kiss-btn {
+  width: 100%;
+  background: linear-gradient(135deg, rgba(244, 114, 182, 0.2) 0%, rgba(251, 191, 36, 0.2) 100%);
+  border: 1.5px solid rgba(244, 114, 182, 0.4);
+  color: #fbcfe8;
+  border-radius: var(--radius-full);
+  padding: 0.65rem 1rem;
+  font-size: 0.86rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.25s ease;
+}
+
+.balyanak-kiss-btn:hover {
+  background: linear-gradient(135deg, #f43f5e 0%, #f59e0b 100%);
+  color: #fff;
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(244, 63, 94, 0.4);
+}
+
+.kiss-badge-count {
+  background: rgba(255, 255, 255, 0.2);
+  font-size: 0.72rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: var(--radius-full);
+}
+
+.kissed-pop {
+  animation: kissBounce 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+@keyframes kissBounce {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.15) rotate(-3deg); }
+  70% { transform: scale(0.95) rotate(2deg); }
+  100% { transform: scale(1); }
+}
+
+/* Bal Yanak Aşk Bildirisi & Büyük Buton */
+.balyanak-banner {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(244, 114, 182, 0.15) 100%);
+  border: 1.5px solid rgba(251, 191, 36, 0.35);
+  border-radius: var(--radius-lg);
+  padding: 1.8rem 2.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.2rem;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4), 0 0 30px rgba(245, 158, 11, 0.15);
+}
+
+.balyanak-banner-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  max-width: 720px;
+}
+
+.balyanak-honey-pot {
+  font-size: 2.4rem;
+  animation: honeyBob 2.5s infinite ease-in-out;
+}
+
+@keyframes honeyBob {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-6px) rotate(6deg); }
+}
+
+.balyanak-banner-title {
+  font-family: var(--font-hand);
+  font-size: 2.2rem;
+  color: #fef08a;
+  line-height: 1.2;
+}
+
+.balyanak-banner-desc {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.6;
+}
+
+.balyanak-kiss-all-btn {
+  background: linear-gradient(135deg, #f43f5e 0%, #f59e0b 100%);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-full);
+  padding: 0.9rem 2.2rem;
+  font-size: 1.05rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(244, 63, 94, 0.45);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+.balyanak-kiss-all-btn:hover {
+  transform: translateY(-4px) scale(1.04);
+  box-shadow: 0 16px 40px rgba(244, 63, 94, 0.65), 0 0 30px rgba(245, 158, 11, 0.4);
+}
+
+.balyanak-kiss-counter {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #fbcfe8;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 0.4rem 1.1rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(244, 114, 182, 0.3);
+}
+
+.balyanak-kiss-counter strong {
+  color: #fef08a;
+  font-size: 1.05rem;
+}
+
+/* Uçuşan Bal & Öpücük Emojileri */
+.floating-kiss-emoji {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  animation: floatKissUp 1.6s forwards cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes floatKissUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(0.6) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-80px) scale(1.3) rotate(-15deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-160px) scale(1) rotate(15deg);
+  }
+}
+
+/* ========================================================================
    NOSTALJİ & GÜLME KRİZLERİMİZ (RETRO SANDIK & POLAROID GALERİ)
    ======================================================================== */
 .nostalgia-section {
@@ -2992,6 +3324,34 @@ body.theater-mode-on .cinema-theater-card {
     min-height: 36px;
     padding: 0.4rem 0.85rem;
     font-size: 0.78rem;
+  }
+
+  /* Bal Yanak Bölümü */
+  .balyanak-section {
+    padding: 4rem 1rem;
+  }
+
+  .balyanak-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .balyanak-img-frame {
+    height: 340px;
+  }
+
+  .balyanak-banner {
+    padding: 1.5rem 1.1rem;
+  }
+
+  .balyanak-banner-title {
+    font-size: 1.7rem;
+  }
+
+  .balyanak-kiss-all-btn {
+    width: 100%;
+    padding: 0.85rem 1.4rem;
+    font-size: 0.95rem;
   }
 
   /* Nostalji Galerisi */

@@ -318,6 +318,43 @@ const APP_CONFIG = {
     signature: "Daima senin TFT Duo'n ve Sevgilin..."
   },
 
+  // 6.2. RESMİ BAL YANAK KÖŞESİ (DÜNYANIN EN TATLI YANAĞI)
+  balYanakSection: {
+    badge: "🍯 RESMİ BAL YANAK KÖŞESİ 🌸",
+    title: "Dünyanın En Tatlı, En Öpülesi Bal Yanağı",
+    subtitle: "Evrendeki bütün tatlılar, şekerler ve ballar bir araya gelse senin o bir çift yanağının tatlılığına yaklaşamaz... İşte benim bu hayattaki en büyük zaafım, öpmeye doyamadığım o bal yanaklar!",
+    cards: [
+      {
+        id: "balyanak-1",
+        photo: "assets/balyanak_1.jpg",
+        badge: "Panda Modu & Pofudukluk 🐼☁️",
+        title: "Yanağını Isırarak Sevme İsteği Uyandıran O Bakış",
+        praise: "O kapüşonun altından öyle tatlı bir bakışın ve öyle yumuşacık, pofuduk bir yanağın var ki... İnsanın dünyadaki bütün dertlerini unutturup sadece o yanağı saatlerce öpüp koklayası geliyor. Dünyanın en sevimli pandası bile senin bu yanağınla yarışamaz!",
+        stat: "Pofudukluk: %1000 Bulut Kıvamı ☁️",
+        quote: "Öpmelere doyulmayan en tatlı pofudukluk..."
+      },
+      {
+        id: "balyanak-2",
+        photo: "assets/balyanak_2.jpg",
+        badge: "Prensesler Prensesi 👑💖",
+        title: "O Tacın Bile Kıskandığı Işıltılı Yanak",
+        praise: "Başına taktığın o pembe taç sana çok yakışmış ama senin asıl tacın o yanağındaki eşsiz ışıltın ve asil tebessümün. Çeneni eline yasladığında ortaya çıkan o tatlı hatlar... Benim bu hayatta gördüğüm en güzel, en asil manzara sensin birtanem.",
+        stat: "Tatlılık: Saf Çiçek Balı 🍯✨",
+        quote: "Kraliçemin yanağına bir ömür feda edilir..."
+      },
+      {
+        id: "balyanak-3",
+        photo: "assets/balyanak_3.jpg",
+        badge: "En Doğal & En Masum Hali 🌸🕊️",
+        title: "Öpücük Kondurmadan Durulamayan O Tatlı Duruş",
+        praise: "Hiçbir filtreye, hiçbir süse gerek yok... O masum dudak büküşün ve kameraya uzanan o pürüzsüz bal yanağın... Her baktığımda içimi eriten, kalbimi hızlandıran ve beni sana her gün bin defa daha aşık eden o eşsiz güzellik.",
+        stat: "Öpülme İhtiyacı: Saniyede 1000 Kere 💋",
+        quote: "Beni benden alan o kusursuz doğallık..."
+      }
+    ],
+    praiseQuote: "Adın gibi, ruhun gibi yanağın da bal... Seni her şeyden çok seviyorum Bal Yanak'ım! 🍯💖"
+  },
+
   // 6.5. NOSTALJİ & GÜLME KRİZLERİMİZ (KOMİK VE GÜZEL ANILAR SANDIĞI)
   nostalgia: [
     {
@@ -398,18 +435,6 @@ const APP_CONFIG = {
       thumbUrl: "assets/nostalgia/nostalji_video_2_thumb.jpg",
       duration: "0:18",
       desc: "Her saniyesinde eğlence ve neşe olan o günün canlı hatırası... Seninle geçen her an bir bayram şenliği gibi."
-    },
-    {
-      id: "nostalgia-8",
-      type: "video",
-      title: "Bizim Hikayemizin En Komik Sahneleri 🍿",
-      date: "Özel Video Kaydı",
-      badge: "Canlı Video ▶",
-      sticker: "EFSANE AN",
-      mediaUrl: "assets/nostalgia/nostalji_video_3.mp4",
-      thumbUrl: "assets/nostalgia/nostalji_video_3_thumb.jpg",
-      duration: "0:47",
-      desc: "Dakikalarca güldüğümüz, birlikte saçmaladığımız ve dünyayı unuttuğumuz o harika video. İyi ki varsın ve iyi ki benimlesin!"
     }
   ],
 

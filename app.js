@@ -45,6 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
   populateContent();
   initOriginMap();
   initTimelineObserver();
+  initBalYanakSection();
   initNostalgiaSection();
   initCinemaSection();
   initRunawayButton();
@@ -456,6 +457,144 @@ function populateContent() {
   // Kutlama Modalı
   document.getElementById("celebration-title").textContent = APP_CONFIG.celebration.title;
   document.getElementById("celebration-message").textContent = APP_CONFIG.celebration.message;
+}
+
+// ========================================================================
+// 4.4. RESMİ BAL YANAK KÖŞESİ (DÜNYANIN EN TATLI YANAĞI)
+// ========================================================================
+function initBalYanakSection() {
+  const sec = APP_CONFIG.balYanakSection;
+  if (!sec) return;
+
+  const grid = document.getElementById("balyanak-grid");
+  const totalCountEl = document.getElementById("kiss-total-count");
+  const kissAllBtn = document.getElementById("balyanak-kiss-all-btn");
+
+  let totalKisses = parseInt(localStorage.getItem("balyanak_total_kisses") || "1000", 10);
+  if (totalCountEl) totalCountEl.textContent = totalKisses.toLocaleString("tr-TR");
+
+  if (grid && sec.cards) {
+    grid.innerHTML = "";
+    sec.cards.forEach((c) => {
+      const card = document.createElement("div");
+      card.className = "balyanak-card";
+      card.dataset.img = c.photo;
+      card.dataset.title = c.title;
+      card.dataset.desc = `${c.badge} — ${c.stat}`;
+      card.innerHTML = `
+        <div class="balyanak-card-tape" aria-hidden="true"></div>
+        <div class="balyanak-img-frame">
+          <img class="balyanak-img" src="${c.photo}" alt="${c.title}" loading="lazy" />
+          <span class="balyanak-badge-pill">${c.badge}</span>
+          <span class="balyanak-zoom-pill">🔍 Büyüt</span>
+        </div>
+        <div class="balyanak-card-body">
+          <div class="balyanak-stat-tag">
+            <span>${c.stat}</span>
+          </div>
+          <h3 class="balyanak-card-title">${c.title}</h3>
+          <p class="balyanak-card-praise">${c.praise}</p>
+          <div class="balyanak-quote-box">
+            <span class="balyanak-quote-icon">❝</span>
+            <span class="balyanak-quote-text">${c.quote}</span>
+          </div>
+          <div class="balyanak-card-action">
+            <button type="button" class="balyanak-kiss-btn" data-id="${c.id}" title="Yanağına Öpücük Kondur">
+              <span class="kiss-btn-icon">💋</span>
+              <span class="kiss-btn-label">Bu Yanağı Öp</span>
+              <span class="kiss-badge-count">+1</span>
+            </button>
+          </div>
+        </div>
+      `;
+
+      // Tekil Öpücük Butonu
+      const kissBtn = card.querySelector(".balyanak-kiss-btn");
+      if (kissBtn) {
+        kissBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          e.preventDefault();
+
+          totalKisses += 1;
+          localStorage.setItem("balyanak_total_kisses", totalKisses.toString());
+          if (totalCountEl) totalCountEl.textContent = totalKisses.toLocaleString("tr-TR");
+
+          logEvent("🍯 Bal Yanağı Öptü", `${c.title} (Toplam: ${totalKisses})`);
+
+          // Buton animasyonu
+          kissBtn.classList.add("kissed-pop");
+          const label = kissBtn.querySelector(".kiss-btn-label");
+          const origText = label.textContent;
+          label.textContent = "Öpüldü! 💖";
+          setTimeout(() => {
+            kissBtn.classList.remove("kissed-pop");
+            label.textContent = origText;
+          }, 900);
+
+          // Uçuşan öpücük ve bal emojileri
+          spawnFloatingKisses(e.clientX || (kissBtn.getBoundingClientRect().left + 40), e.clientY || kissBtn.getBoundingClientRect().top, 6);
+
+          if (window.confetti) {
+            window.confetti({
+              particleCount: 15,
+              spread: 45,
+              origin: {
+                x: (e.clientX || window.innerWidth / 2) / window.innerWidth,
+                y: (e.clientY || window.innerHeight / 2) / window.innerHeight
+              },
+              colors: ["#f472b6", "#fbbf24", "#fda4af"]
+            });
+          }
+        });
+      }
+
+      grid.appendChild(card);
+    });
+  }
+
+  // Büyük Kocaman Öpücük Butonu
+  if (kissAllBtn) {
+    kissAllBtn.addEventListener("click", (e) => {
+      totalKisses += 100;
+      localStorage.setItem("balyanak_total_kisses", totalKisses.toString());
+      if (totalCountEl) totalCountEl.textContent = totalKisses.toLocaleString("tr-TR");
+
+      logEvent("🍯 Kocaman Bal Öpücüğü", `+100 Öpücük (Toplam: ${totalKisses})`);
+
+      kissAllBtn.classList.add("kissed-pop");
+      setTimeout(() => kissAllBtn.classList.remove("kissed-pop"), 800);
+
+      const rect = kissAllBtn.getBoundingClientRect();
+      spawnFloatingKisses(rect.left + rect.width / 2, rect.top, 18);
+
+      if (window.confetti) {
+        window.confetti({
+          particleCount: 60,
+          spread: 80,
+          origin: {
+            x: (rect.left + rect.width / 2) / window.innerWidth,
+            y: rect.top / window.innerHeight
+          },
+          colors: ["#f472b6", "#fbbf24", "#f59e0b", "#f43f5e"]
+        });
+      }
+    });
+  }
+
+  function spawnFloatingKisses(x, y, count = 6) {
+    const emojis = ["💋", "🍯", "💖", "🌸", "✨", "🥰"];
+    for (let i = 0; i < count; i++) {
+      const el = document.createElement("span");
+      el.className = "floating-kiss-emoji";
+      el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      el.style.left = `${x + (Math.random() * 80 - 40)}px`;
+      el.style.top = `${y + (Math.random() * 40 - 20)}px`;
+      el.style.fontSize = `${1.4 + Math.random() * 1}rem`;
+      el.style.animationDuration = `${1.2 + Math.random() * 0.8}s`;
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 2000);
+    }
+  }
 }
 
 // ========================================================================
