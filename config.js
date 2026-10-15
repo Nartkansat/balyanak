@@ -147,14 +147,14 @@ const APP_CONFIG = {
       location: "Bizim Küçük Dünyamız",
       photo: "assets/media/5.jpg",
       badge: "Mimiklerimiz 😂",
-      note: "Dört kareye sığmayan neşemiz, yaptığımız şapşallıklar ve birlikteyken attığımız o içten kahkahalar... İnsan sadece yanında gerçekten kendisi olabildiği birini böyle sınırsızca sevebilir.",
+      note: "Dört kareye sığmayan neşemiz, yaptığımız komiklikler ve birlikteyken eğlendiğimiz o güzel zamanlar... İnsan sadece yanında gerçekten kendisi olabildiği birini böyle sınırsızca sevebilir.",
       bgAtmosphere: "linear-gradient(135deg, #1b162b 0%, #30244f 100%)"
     },
     {
       id: "milestone-6",
       date: "Bu yanak Şaka mı?",
       title: "Senin o bal yanağın bir ömre bedel",
-      location: "Bizim Anlarımız",
+      location: "Starbucks",
       video: "assets/media/6.mp4",
       photo: "assets/media/5.jpg",
       isVideo: true,
@@ -166,7 +166,7 @@ const APP_CONFIG = {
       id: "milestone-7",
       date: "Birlikte Her An Güzel",
       title: "Gözlerimin İçine Güldüğün O Canlı An (Canlı Video) 🎥",
-      location: "Sevginin Başkenti",
+      location: "Starbucks",
       video: "assets/media/7.mp4",
       photo: "assets/media/8.jpg",
       isVideo: true,
@@ -180,7 +180,7 @@ const APP_CONFIG = {
       title: "Huzurun Başkenti: Senin olduğun her yer",
       location: "Rüzgarlı Ama Sıcacık Bir Köşe",
       photo: "assets/media/8.jpg",
-      badge: "Huzur 🌿",
+      badge: "Mersin Üniversitesi Kantin",
       note: "Gözlerimi kapatıp başımı omzuna, kokunu içime çektiğim o saniye... Dünyanın bütün karmaşası kapının dışında kalıyor. Bana bu güveni, bu tarifsiz huzuru veren tek insan sensin.",
       bgAtmosphere: "linear-gradient(135deg, #101c24 0%, #1e3644 100%)"
     },
@@ -188,7 +188,7 @@ const APP_CONFIG = {
       id: "milestone-9",
       date: "Kalbinin Ritmi",
       title: "Derin Bakışlar & Kalp Kalbe",
-      location: "Zamanın Ötesinde",
+      location: "Starbucks",
       photo: "assets/media/9.jpg",
       badge: "Derin Sevgi 🖤",
       note: "Boynuna sokulduğumda kalbimin nasıl çarptığını bir ben biliyorum, bir de sen. Senin o derin bakışların benim hayatımdaki en büyük pusulam.",
@@ -276,16 +276,6 @@ const APP_CONFIG = {
     },
     {
       id: "milestone-18",
-      date: "O Meşhur TFT Gecesi",
-      title: "Muhteşem İkili 1.lik Zaferimiz 🏆",
-      location: "Discord & Sihirdar Vadisi",
-      photo: "assets/tft_double_up_win.png",
-      badge: "Double Up #1 Şampiyonluk 🏆",
-      note: "Sen Kanmei Suspus'unla (jMiyavv) 'Bu maçı kesin 1. bitireceğiz' derken benim Chibi Akademi Katarina'mla (PAPAZ) sana şampiyon aramam... Ve işte o efsane 33 dakikalık 1.liğimiz! Canımız 1 kaldığında bile seninle gülmek dünyanın en güzel şeyiydi. Bu hayattaki en iyi takım arkadaşım sensin.",
-      bgAtmosphere: "linear-gradient(135deg, #0c1527 0%, #1f2b56 100%)"
-    },
-    {
-      id: "milestone-19",
       date: "Geçen Hafta...",
       title: "O Kırgınlık & Bütün Pişmanlığım",
       location: "Pişmanlığımın Başladığı An",
@@ -295,7 +285,7 @@ const APP_CONFIG = {
       bgAtmosphere: "linear-gradient(135deg, #1f1013 0%, #3d141c 100%)"
     },
     {
-      id: "milestone-20",
+      id: "milestone-19",
       date: "Bugün, Doğum Günün 🎂",
       title: "İyi ki Doğdun Hayatımın Anlamı",
       location: "Kalbimin Tam Ortası",
@@ -422,6 +412,17 @@ const APP_CONFIG = {
       mediaUrl: "assets/nostalgia/behzat_c.jpg",
       thumbUrl: "assets/nostalgia/behzat_c.jpg",
       desc: "Tahta kutuya telefonu yaslayıp dışarıda seninle Behzat Ç. izlediğimiz o gün... İki soğuk Tuborg, fonda 'Çekiç ve Gül' ve yanımda dünyalara değişmeyeceğim o güzel insan. Dünyanın en lüks restoranı bile seninle paylaştığım şu masadaki samimiyetin, huzurun ve muhabbetin yanından bile geçemez."
+    },
+    {
+      id: "nostalgia-tft",
+      type: "photo",
+      title: "Double Up #1 Şampiyonluğumuz (33:18) 🏆🎮",
+      date: "O Unutulmaz TFT Gecesi",
+      badge: "Muhteşem İkili Zaferi 🥇",
+      sticker: "1. SIRA!",
+      mediaUrl: "assets/tft_double_up_win.png",
+      thumbUrl: "assets/tft_double_up_win.png",
+      desc: "Sen Kanmei Suspus'unla (jMiyavv) 'Bu maçı kesin 1. bitireceğiz' derken benim Chibi Akademi Katarina'mla (PAPAZ) sana şampiyon aramam... Ve işte o efsane 33 dakikalık 1.liğimiz! Canımız 1 kaldığında bile seninle gülmek dünyanın en güzel şeyiydi. Bu hayattaki en iyi takım arkadaşım sensin."
     },
     {
       id: "nostalgia-6",
