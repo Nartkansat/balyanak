@@ -256,12 +256,12 @@ const APP_CONFIG = {
     },
     {
       id: "milestone-16",
-      date: "Sımsıkı Sarıldığımız An",
-      title: "Sıcacık Bir Kış Kucaklaşması",
-      location: "Gökyüzünün Altında",
+      date: "Yanak Yanağa ",
+      title: "Bal İnsan 💛​",
+      location: "Sizin Evin Sahilinde",
       photo: "assets/media/16.jpg",
-      badge: "Ebedi Sarılma ❄️",
-      note: "Soğuk havada birbirimize böyle sımsıkı kenetlendiğimiz o an... Yanağının sıcaklığı tenime değdiği sürece bana hiçbir mevsim kış olamaz.",
+      badge: "Ebedi Aşk 💘​",
+      note: "Sizin sitenin bahçesinde bana kahve yapıp getirmiştin yerim seni.. Yanaklarını kopararak sevmeyi özledim.. ",
       bgAtmosphere: "linear-gradient(135deg, #141b2a 0%, #233550 100%)"
     },
     {
@@ -317,7 +317,7 @@ const APP_CONFIG = {
         badge: "Bal Yanak Modu & Haticecikkk 🐼☁️",
         title: "Yanağını Isırarak Sevme İsteği Uyandıran O Bakış",
         praise: "O kapüşonun altından öyle tatlı bir bakışın ve öyle yumuşacık, pofuduk bir yanağın var ki... İnsanın dünyadaki bütün dertlerini unutturup sadece o yanağı saatlerce öpüp koklayası geliyor. Dünyanın en sevimli pandası bile senin bu yanağınla yarışamaz!",
-        stat: "Pofudukluk: %1000 Bulut Kıvamı ☁️",
+        stat: "Ballık Oranı: %100000000 BAL 🍯💖",
         quote: "Öpmelere doyulmayan en tatlı pofudukluk..."
       },
       {

@@ -964,9 +964,9 @@ function initRunawayButton() {
 
     tauntBubble.textContent = tauntText;
     tauntBubble.classList.remove("hidden");
-
-    tauntBubble.style.left = `${Math.min(arenaRect.width - 180, Math.max(10, randomX))}px`;
-    tauntBubble.style.top = `${Math.max(5, randomY - 45)}px`;
+    tauntBubble.classList.remove("taunt-pop");
+    void tauntBubble.offsetWidth; // CSS yeniden tetikleme
+    tauntBubble.classList.add("taunt-pop");
 
     noBtn.style.filter = "brightness(1.3)";
     setTimeout(() => {
