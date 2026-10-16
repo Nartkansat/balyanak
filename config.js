@@ -51,7 +51,7 @@ const APP_CONFIG = {
     hints: [
       "💡 1. İpucu: Sana en çok dediğim kelime",
       "💡 2. İpucu: En çok beğendiğim yerin",
-      "💡 3. İpucu: ss"
+      "💡 3. İpucu: Şifre: Balyanak"
     ],
 
     bypassPhraseText: "Şifreyi hatırlayamadım 🥺",
