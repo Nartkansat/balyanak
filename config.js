@@ -276,16 +276,6 @@ const APP_CONFIG = {
     },
     {
       id: "milestone-18",
-      date: "Geçen Hafta...",
-      title: "O Kırgınlık & Bütün Pişmanlığım",
-      location: "Pişmanlığımın Başladığı An",
-      photo: "assets/media/2.jpg",
-      badge: "Tüm Kalbimle Özür Dilerim 🥺",
-      note: "Seni kırmak, dünyada isteyeceğim en son şey bile değil. Sultan Pansiyon'un o ilk gününden beri bana böyle sevgiyle bakan o güzel gözleri soldurduğum her an için kendime kızıyorum. Lütfen beni affet birtanem.",
-      bgAtmosphere: "linear-gradient(135deg, #1f1013 0%, #3d141c 100%)"
-    },
-    {
-      id: "milestone-19",
       date: "Bugün, Doğum Günün 🎂",
       title: "Sıcacık Mum Işığında: İyi ki Doğdun Hayatımın Anlamı 🕯️💖",
       location: "Kalbimin Tam Ortası",
@@ -301,9 +291,8 @@ const APP_CONFIG = {
     tag: "TFT Partnerim & Hayatımın Aşkına ✉️",
     title: "Sana Küçük Bir Mektup...",
     paragraphs: [
-      "Bazen hayatta ekonomi yapamazsın, yanlış şampiyonları tahtaya koyarsın ya da en kritik anda yanlış hamle yaparsın... Ben de öyle bir hata yaptım ve seni çok kırdım.",
-      "İnan bana seni üzmek, yüzündeki o ışığı söndürmek dünyada isteyeceğim en son şeydi.Senin o güzel kalbini incittiğim için ne kadar pişman olduğumu anlatamam.",
-      "Bugün senin doğum günün... İyi ki doğdun, iyi ki varsın ve iyi ki seni bu kadar çok sevmişim. Lütfen beni affet ve seni her şeyden çok seviyorum."
+      "Ben bir yanlış yaptım, kritik bir süreçte bu olay yaşandı bana neleri söylersen söyle haklısın.. Ben senin güvenini kırdım,sarstım, benim sana olan sevgimi,aşkımı anlatacak dil edebiyatı, mimikler, miktarlar, sayılar yok, laf olsun diye de söylediğim hiçbir şey yok, hepsini hissederek ve içtenlikle söylüyorum. Senin benim hayatımdaki yerine benim hayatımdan bile önemli bir durumda. Benim hayatımda sen ol ben tüm her şeye karşı savaşırım,mücadele ederim,uğraşırım çünkü ucunda sen varsın, sen benim herşeyimsin. Yanyana olduğumuz hangi süreçte kavga ediyoruz ? Etsek bile ne kadar sürebiliyor ? Sıkılmadan her şeyi yapabilir, saatlerce konuşur, saatlerce dizi izler, saatlerce oyun oynar, seninle saatlerce her şeyi yapabiliyoruz, sıkılmadan.. Gel elimden tut, seni dünyanın en mutlu insanı yapabilmek için canımı vereyim, Yeter ki evet de bana tüm süreçleri atlatalım, geleceğimizi inşa edelim.Senin o güzel kalbini incittiğim için ne kadar pişman olduğumu anlatamam",
+      "Bugün senin doğum günün... İyi ki doğdun, iyi ki varsın ve iyi ki seni bu kadar çok sevmişim. Lütfen beni affet, seni her şeyden çok seviyorum bal yanak.İnan bana seni üzmek, yüzündeki o ışığı söndürmek dünyada isteyeceğim en son şeydi.Senin o güzel kalbini incittiğim için ne kadar pişman olduğumu anlatamam.",
     ],
     signature: "Daima senin TFT Duo'n ve Sevgilin...",
     // Belki Bir Gün... (Gelecek Hayalimiz & Düğün Kehaneti)
@@ -382,63 +371,63 @@ const APP_CONFIG = {
     {
       id: "nostalgia-2",
       type: "photo",
-      title: "Gülme Krizlerimiz Vol. 1 😂",
-      date: "Kahkaha Seansı",
+      title: "Bitmeyen Anılar 😂",
+      date: "Zamanla Sen",
       badge: "Şapşallık Modu 🤪",
       sticker: "KOMİK AN",
       mediaUrl: "assets/nostalgia/komik_ani_1.jpg",
       thumbUrl: "assets/nostalgia/komik_ani_1.jpg",
-      desc: "Yan yana geldiğimizde normal kalabilmek imkansız! İkimizin de kahkahalara boğulduğu, gözlerimizin içinin güldüğü o tatlı şapşal hallerimiz."
+      desc: "Yan yana geldiğimizde normal kalabilmek imkansız. Saatlerce birçok şeyi konuşabiliyor olmak çok güzeldi."
     },
     {
       id: "nostalgia-3",
       type: "photo",
-      title: "Tatlı Şapşallıklar & Komik Pozlar 📸",
+      title: "En Değerli Hissettiğim Anlardan 📸",
       date: "Bizim Doğal Halimiz",
-      badge: "Neşe Deposu 💖",
+      badge: "İyi ki Sen 💖",
       sticker: "100% BİZ",
       mediaUrl: "assets/nostalgia/komik_ani_2.jpeg",
       thumbUrl: "assets/nostalgia/komik_ani_2.jpeg",
-      desc: "Hangi kameraya ne komiklik yapsak diye yarıştığımız, en doğal halimiz. Seninle çocuk gibi gülmeyi ve saçmalamayı dünyalara değişmem."
+      desc: "Beraber doğum gününü kutladığımız o gece, sana her zaman aşk ile baktım, sana buradan tekrardan çok teşekkür ederim.."
     },
     {
       id: "nostalgia-4",
       type: "photo",
-      title: "Hayat Seninle Çizgi Film Gibi 🎨",
-      date: "Duo Kaosu",
+      title: "Hayat Seninle Güzel",
+      date: "Aşk İnsan",
       badge: "Gülüşünü Sevdiğim 🌟",
       sticker: "KAHKAHA",
       mediaUrl: "assets/nostalgia/komik_ani_3.jpeg",
       thumbUrl: "assets/nostalgia/komik_ani_3.jpeg",
-      desc: "En ciddi anı bile tek bir bakışla komediye çevirme yeteneğimiz... Hayatın bütün yorgunluğunu silip atan o sıcacık tebessümün."
+      desc: "Seninle bir gece 1 saniye gibi hemen geçip gidiyor, her zaman seninle olmak istiyorum."
     },
     {
       id: "nostalgia-5",
       type: "photo",
-      title: "Gözlerinin İçi Güldüğünde... ✨",
-      date: "Bal Yanak & Neşe",
+      title: "555 Fotoğraf Çekildiğimiz Gün ✨",
+      date: "Fotoğraf Günü",
       badge: "Bal Yanak 🍯",
       sticker: "EN SEVDİĞİM",
       mediaUrl: "assets/nostalgia/komik_ani_4.webp",
       thumbUrl: "assets/nostalgia/komik_ani_4.webp",
-      desc: "İşte bu gülüşe bir ömür verilir! Birlikte geçirdiğimiz her anı karnımıza ağrılar girene kadar gülerek taçlandırdığımız o eşsiz anlar."
+      desc: "Beraber burada fotoğraf çekilip durmuştuk ve sen beğenmiyordun :D Bu güzelliği nasıl beğenmiyorsun ?"
     },
     {
       id: "nostalgia-behzat",
       type: "photo",
-      title: "Dışarıda Beraber Behzat Ç. & Tuborg Keyfimiz 🍻🎬",
+      title: "Dışarıda Beraber Behzat Ç. 🍻🎬",
       date: "O Huzurlu Akşamüstü",
       badge: "Çekiç ve Gül & Biz 🖤",
       sticker: "BİZİM HAVAMIZ",
       mediaUrl: "assets/nostalgia/behzat_c.jpg",
       thumbUrl: "assets/nostalgia/behzat_c.jpg",
-      desc: "Tahta kutuya telefonu yaslayıp dışarıda seninle Behzat Ç. izlediğimiz o gün... İki soğuk Tuborg, fonda 'Çekiç ve Gül' ve yanımda dünyalara değişmeyeceğim o güzel insan. Dünyanın en lüks restoranı bile seninle paylaştığım şu masadaki samimiyetin, huzurun ve muhabbetin yanından bile geçemez."
+      desc: "Telefonu yaslayıp dışarıda seninle Behzat Ç. izlediğimiz o gün... İki soğuk Tuborg, fonda 'Çekiç ve Gül' ve yanımda dünyalara değişmeyeceğim o güzel insan. Dünyanın en lüks restoranı bile seninle paylaştığım şu masadaki samimiyetin, huzurun ve muhabbetin yanından bile geçemez."
     },
     {
       id: "nostalgia-tft",
       type: "photo",
-      title: "Double Up #1 Şampiyonluğumuz (33:18) 🏆🎮",
-      date: "O Unutulmaz TFT Gecesi",
+      title: "Muhteşem İkili #1 (33:18) 🏆🎮",
+      date: "Unutulmaz TFT Oyunlarımız",
       badge: "Muhteşem İkili Zaferi 🥇",
       sticker: "1. SIRA!",
       mediaUrl: "assets/tft_double_up_win.png",
@@ -459,62 +448,62 @@ const APP_CONFIG = {
     {
       id: "nostalgia-6",
       type: "video",
-      title: "Canlı Kahkahalar & Tatlı Anılar 🎥",
-      date: "Canlı Kayıt",
+      title: "Tatlı Anılar 🎥",
+      date: "Masumluk",
       badge: "Canlı Video ▶",
       sticker: "VİDEO KAYDI",
       mediaUrl: "assets/nostalgia/nostalji_video_1.mp4",
       thumbUrl: "assets/nostalgia/nostalji_video_1_thumb.jpg",
       duration: "0:12",
-      desc: "Fotoğraflar yetmezdi; sesini, kahkahanı ve aramızdaki o tatlı enerjiyi her dinlediğimde yüzümde kocaman bir tebessüm açıyor."
+      desc: "Bunlar ne derken o masumluk, o tatlılık.. İzleyince hala gülüyorum ve ağlıyorum, çok güzel bir insansın. "
     },
     {
       id: "nostalgia-7",
       type: "video",
-      title: "25 Ağustos 2023 - O Eğlenceli Gün 🎬",
-      date: "25 Ağustos 2023",
+      title: "Bal Yanak Cips Yiyor 🎬",
+      date: "Haticecikkk",
       badge: "Canlı Video ▶",
       sticker: "NOSTALJİ",
       mediaUrl: "assets/nostalgia/nostalji_video_2.mp4",
       thumbUrl: "assets/nostalgia/nostalji_video_2_thumb.jpg",
       duration: "0:18",
-      desc: "Her saniyesinde eğlence ve neşe olan o günün canlı hatırası... Seninle geçen her an bir bayram şenliği gibi."
+      desc: "Ankara'da benim salak saçma triplere girdiğim zamanlar.. Ama sen yine her halinle çok güzel ve çok tatlısın haticecikkk, bi de cips yiyor her zamanki gibi :)"
     },
     {
       id: "nostalgia-new1",
       type: "video",
-      title: "Güneşin Altında O Masum Güzelliğin ☀️🌸",
+      title: "Belediyenin Yerinde Biz ☀️🌸",
       date: "Güneşli Bir Gün",
       badge: "Canlı Video ▶",
       sticker: "DURU GÜZELLİK",
       mediaUrl: "assets/nostalgia/new1.mp4",
       thumbUrl: "assets/nostalgia/new1_thumb.jpg",
       duration: "0:05",
-      desc: "Hasır şemsiyelerin altında, telefonuna bakarken rüzgarla dans eden saçlarını düzelttiğin o kısacık an bile kalbimin nasıl hızla çarptığını anlatamam. Her halin ayrı bir sanat eseri sevgilim."
+      desc: "Belediyenin yerine gidip beraber geçirdiğimiz zamanlar, Mersin'in her köşesinde anılarımız var, en kötü yer bile seninleyken en güzel yer."
     },
     {
       id: "nostalgia-new2",
       type: "video",
-      title: "Palmiyeler Altında Yan Yana Gülüşümüz 🌴💖",
+      title: "Sahilde Parkta Otururken 💖",
       date: "Sahil Yürüyüşümüz",
       badge: "Canlı Video ▶",
       sticker: "İKİMİZİN IŞILTISI",
       mediaUrl: "assets/nostalgia/new2.mp4",
       thumbUrl: "assets/nostalgia/new2_thumb.jpg",
       duration: "0:08",
-      desc: "Güneş yüzümüze vururken senin o ışıl ışıl gülümsemenle kameraya baktığımız o an... Yanımda senin gibi bir mucize varken dünyada başka hiçbir şeye ihtiyacım yok. En sevdiğim canlı anılarımızdan biri!"
+      desc: "Buradayken kankaydık :) Arkadaşlıktan gelişen bu süreçte hayatımın her yerine dokunuşun var, en çokta kalbime, seni gülerken görmek beni mutlu ediyor."
     },
     {
       id: "nostalgia-new3",
       type: "video",
       title: "Karşımda Dünyanın En Güzel Manzarası 🍟🍻",
-      date: "En Lezzetli Sohbet",
+      date: "Teknede Balık Ekmek",
       badge: "Canlı Video ▶",
       sticker: "CANLI SOHBET",
       mediaUrl: "assets/nostalgia/new3.mp4",
       thumbUrl: "assets/nostalgia/new3_thumb.jpg",
       duration: "0:14",
-      desc: "Masada patatesler, soğuk içecekler ve karşımda dünyalara değişmeyeceğim o tatlı gülüşün... Sen bir şeyler anlatırken ellerini tatlı tatlı hareket ettirişini, gözlerinin içinin parlayışını ömür boyu hayranlıkla izleyebilirim."
+      desc: "Senin bu limon aşkın nasıl da döküyor :) İlk günlerden.. İlk zamanlar ne kadar zayıfsın ama ben her halini seviyorum, sen olsan erimişim derdin :D"
     }
   ],
 
