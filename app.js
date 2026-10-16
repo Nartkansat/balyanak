@@ -518,6 +518,26 @@ function initBalYanakSection() {
           <span class="balyanak-zoom-pill">🔍 Büyüt</span>
         `;
 
+      // Stat rozeti: "Öpülme İhtiyacı: Saniyede 1000 Kere 💋" -> Etiket & Değer ayrımı
+      let statBadgeHtml = "";
+      if (c.stat && c.stat.includes(":")) {
+        const colonIdx = c.stat.indexOf(":");
+        const label = c.stat.substring(0, colonIdx).trim();
+        const val = c.stat.substring(colonIdx + 1).trim();
+        statBadgeHtml = `
+          <div class="balyanak-stat-pill">
+            <span class="stat-pill-label">${label}:</span>
+            <span class="stat-pill-val">${val}</span>
+          </div>
+        `;
+      } else {
+        statBadgeHtml = `
+          <div class="balyanak-stat-pill">
+            <span class="stat-pill-val">${c.stat || ""}</span>
+          </div>
+        `;
+      }
+
       card.innerHTML = `
         <div class="balyanak-card-tape" aria-hidden="true"></div>
         <div class="balyanak-img-frame">
@@ -526,7 +546,7 @@ function initBalYanakSection() {
         </div>
         <div class="balyanak-card-body">
           <div class="balyanak-stat-tag">
-            <span>${c.stat}</span>
+            ${statBadgeHtml}
           </div>
           <h3 class="balyanak-card-title">${c.title}</h3>
           <p class="balyanak-card-praise">${c.praise}</p>

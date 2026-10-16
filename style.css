@@ -1709,16 +1709,21 @@ body {
 
 .balyanak-card-tape {
   position: absolute;
-  top: -10px;
+  top: -9px;
   left: 50%;
   transform: translateX(-50%);
-  width: 80px;
-  height: 20px;
-  background: rgba(251, 191, 36, 0.35);
-  backdrop-filter: blur(4px);
-  border-radius: 3px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  z-index: 2;
+  width: 76px;
+  height: 18px;
+  background: linear-gradient(135deg, rgba(254, 240, 138, 0.45) 0%, rgba(251, 191, 36, 0.25) 100%);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(254, 240, 138, 0.4);
+  border-left: 2px dashed rgba(255, 255, 255, 0.45);
+  border-right: 2px dashed rgba(255, 255, 255, 0.45);
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  z-index: 5;
+  pointer-events: none;
 }
 
 .balyanak-img-frame {
@@ -1749,40 +1754,55 @@ body {
   position: absolute;
   top: 12px;
   left: 12px;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(15, 23, 42, 0.88);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(251, 191, 36, 0.4);
+  border: 1px solid rgba(251, 191, 36, 0.5);
   color: #fef08a;
-  font-size: 0.75rem;
+  font-size: 0.76rem;
   font-weight: 800;
-  padding: 0.3rem 0.75rem;
+  padding: 0.32rem 0.78rem;
   border-radius: var(--radius-full);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+  max-width: calc(100% - 24px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  z-index: 4;
+  pointer-events: none;
 }
 
 .balyanak-zoom-pill {
   position: absolute;
   bottom: 12px;
   right: 12px;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(15, 23, 42, 0.9);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #fff;
-  font-size: 0.72rem;
+  border: 1px solid rgba(251, 191, 36, 0.6);
+  color: #fef08a !important;
+  font-size: 0.74rem;
   font-weight: 700;
-  padding: 0.25rem 0.65rem;
+  padding: 0.32rem 0.75rem;
   border-radius: var(--radius-full);
-  opacity: 0.85;
-  transition: opacity 0.2s, background 0.2s;
+  opacity: 0.95;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+  transition: all 0.25s ease;
+  pointer-events: none;
+  z-index: 4;
 }
 
-.balyanak-card:hover .balyanak-zoom-pill {
-  opacity: 1;
-  background: #fbbf24;
-  color: #0b0e1e;
-  border-color: #fbbf24;
+@media (hover: hover) {
+  .balyanak-card:hover .balyanak-zoom-pill {
+    opacity: 1;
+    background: #fbbf24;
+    color: #1e1b4b !important;
+    border-color: #fbbf24;
+    box-shadow: 0 4px 16px rgba(251, 191, 36, 0.4);
+  }
 }
 
 .balyanak-video-play-pulse {
@@ -1846,17 +1866,62 @@ body {
 }
 
 .balyanak-stat-tag {
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 0.2rem 0 0.4rem;
+}
+
+.balyanak-stat-pill {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.45rem;
+  background: rgba(14, 165, 233, 0.14);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  padding: 0.38rem 0.8rem;
+  border-radius: 12px;
+  max-width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.balyanak-stat-pill .stat-pill-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #7dd3fc;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.balyanak-stat-pill .stat-pill-val {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #38bdf8;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
 }
 
 .balyanak-stat-tag span {
-  font-size: 0.75rem;
-  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  font-size: 0.76rem;
+  font-weight: 700;
   color: #38bdf8;
-  background: rgba(56, 189, 248, 0.12);
-  border: 1px solid rgba(56, 189, 248, 0.3);
-  padding: 0.2rem 0.65rem;
-  border-radius: var(--radius-full);
+  background: rgba(14, 165, 233, 0.14);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  padding: 0.36rem 0.75rem;
+  border-radius: 12px;
+  line-height: 1.4;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .balyanak-card-title {
@@ -3513,12 +3578,43 @@ body.theater-mode-on .cinema-theater-card {
 
   /* Bal Yanak Bölümü */
   .balyanak-section {
-    padding: 4rem 1rem;
+    padding: 3.5rem 1rem;
   }
 
   .balyanak-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+
+  .balyanak-card {
+    padding: 1.15rem;
+    border-radius: 20px;
+  }
+
+  .balyanak-img-frame {
+    height: 350px;
+    border-radius: 14px;
+  }
+
+  .balyanak-card-title {
+    font-size: 1.25rem;
+  }
+
+  .balyanak-card-praise {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .balyanak-stat-pill {
+    padding: 0.42rem 0.85rem;
+  }
+
+  .balyanak-stat-pill .stat-pill-label {
+    font-size: 0.74rem;
+  }
+
+  .balyanak-stat-pill .stat-pill-val {
+    font-size: 0.8rem;
   }
 
   .letter-future-card {
@@ -3537,10 +3633,6 @@ body.theater-mode-on .cinema-theater-card {
 
   .future-card-text {
     font-size: 0.94rem !important;
-  }
-
-  .balyanak-img-frame {
-    height: 340px;
   }
 
   .balyanak-banner {
