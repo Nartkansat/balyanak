@@ -1247,44 +1247,63 @@ let audioSynth = null;
 function initAmbientAudio() {
   const toggleBtn = document.getElementById("audio-toggle-btn");
   const audioText = document.getElementById("audio-text");
+  const musicConfig = (typeof APP_CONFIG !== "undefined" && APP_CONFIG.music) ? APP_CONFIG.music : {
+    title: "PERA - Bal",
+    src: "assets/audio/pera_bal.mp3",
+    defaultVolume: 0.55
+  };
 
-  class AmbientSynth {
+  class AudioPlayer {
     constructor() {
-      this.ctx = null;
+      this.audio = new Audio(musicConfig.src);
+      this.audio.loop = true;
+      this.audio.preload = "auto";
+      this.audio.volume = musicConfig.defaultVolume || 0.55;
       this.isPlaying = false;
-      this.timer = null;
-      this.chords = [
-        [261.63, 329.63, 392.00, 493.88], // Cmaj7
-        [220.00, 261.63, 329.63, 392.00], // Am7
-        [174.61, 261.63, 329.63, 349.23], // Fmaj7
-        [196.00, 261.63, 293.66, 392.00]  // Gsus4
-      ];
-      this.currentChord = 0;
+      this.wasPlayingBeforeVideo = false;
+
+      this.audio.addEventListener("play", () => {
+        this.isPlaying = true;
+        if (toggleBtn) toggleBtn.classList.add("playing");
+        if (audioText) audioText.textContent = "Çalıyor";
+      });
+
+      this.audio.addEventListener("pause", () => {
+        this.isPlaying = false;
+        if (toggleBtn) toggleBtn.classList.remove("playing");
+        if (audioText) audioText.textContent = musicConfig.title || "PERA - Bal";
+      });
+
+      this.audio.addEventListener("ended", () => {
+        this.isPlaying = false;
+        if (toggleBtn) toggleBtn.classList.remove("playing");
+        if (audioText) audioText.textContent = musicConfig.title || "PERA - Bal";
+      });
+
+      this.audio.addEventListener("error", (e) => {
+        console.warn("Müzik yükleme veya çalma hatası:", e);
+      });
     }
 
     start() {
       if (this.isPlaying) return;
-      if (!this.ctx) {
-        const AudioContext = window.AudioContext || window.webkitAudioContext;
-        this.ctx = new AudioContext();
+      const playPromise = this.audio.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          this.isPlaying = true;
+          if (toggleBtn) toggleBtn.classList.add("playing");
+          if (audioText) audioText.textContent = "Çalıyor";
+        }).catch((err) => {
+          console.log("Tarayıcı otomatik çalma politikası veya kullanıcı etkileşimi bekleniyor:", err);
+        });
       }
-
-      if (this.ctx.state === "suspended") {
-        this.ctx.resume();
-      }
-
-      this.isPlaying = true;
-      toggleBtn.classList.add("playing");
-      audioText.textContent = "Çalıyor";
-
-      this.playLoop();
     }
 
     stop() {
+      this.audio.pause();
       this.isPlaying = false;
-      if (this.timer) clearTimeout(this.timer);
-      toggleBtn.classList.remove("playing");
-      audioText.textContent = "Melodi";
+      if (toggleBtn) toggleBtn.classList.remove("playing");
+      if (audioText) audioText.textContent = musicConfig.title || "PERA - Bal";
     }
 
     toggle() {
@@ -1294,55 +1313,13 @@ function initAmbientAudio() {
         this.start();
       }
     }
-
-    playNote(freq, delay, duration) {
-      if (!this.ctx || !this.isPlaying) return;
-
-      setTimeout(() => {
-        if (!this.isPlaying) return;
-
-        const osc = this.ctx.createOscillator();
-        const gain = this.ctx.createGain();
-        const filter = this.ctx.createBiquadFilter();
-
-        osc.type = "sine";
-        osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
-
-        filter.type = "lowpass";
-        filter.frequency.setValueAtTime(800, this.ctx.currentTime);
-
-        gain.gain.setValueAtTime(0, this.ctx.currentTime);
-        gain.gain.linearRampToValueAtTime(0.045, this.ctx.currentTime + 0.15);
-        gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + duration);
-
-        osc.connect(filter);
-        filter.connect(gain);
-        gain.connect(this.ctx.destination);
-
-        osc.start();
-        osc.stop(this.ctx.currentTime + duration);
-      }, delay);
-    }
-
-    playLoop() {
-      if (!this.isPlaying) return;
-
-      const chord = this.chords[this.currentChord];
-      this.currentChord = (this.currentChord + 1) % this.chords.length;
-
-      chord.forEach((freq, idx) => {
-        this.playNote(freq, idx * 300, 2.8);
-      });
-
-      this.timer = setTimeout(() => {
-        this.playLoop();
-      }, 2600);
-    }
   }
 
-  audioSynth = new AmbientSynth();
+  audioSynth = new AudioPlayer();
 
-  toggleBtn.addEventListener("click", () => {
-    audioSynth.toggle();
-  });
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", () => {
+      audioSynth.toggle();
+    });
+  }
 }

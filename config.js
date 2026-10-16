@@ -17,6 +17,14 @@ const APP_CONFIG = {
   recipientName: "Bal Yanaklı",       // Sevgilinizin adı / Hitap
   senderName: "Senin Şapşalın",    // Gönderen / İmza
 
+  // 1.1 ARKA PLAN ŞARKISI (PERA - Bal)
+  music: {
+    title: "PERA - Bal",
+    src: "assets/audio/pera_bal.mp3",
+    youtubeUrl: "https://www.youtube.com/watch?v=lf9zFEKw9sY",
+    defaultVolume: 0.55
+  },
+
   // 2. HER ŞEYİN BAŞLADIĞI NOKTA (HARİTA & KOORDİNATLAR)
   originLocation: {
     title: "Her Şeyin Başladığı Yer",

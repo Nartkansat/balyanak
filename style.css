@@ -498,6 +498,7 @@ body {
   font-family: var(--font-sans);
   font-size: 0.8rem;
   font-weight: 500;
+  white-space: nowrap;
   transition: all var(--transition-fast);
 }
 
@@ -3983,6 +3984,27 @@ body.theater-mode-on .cinema-theater-card {
 
   .section-subtitle {
     font-size: 0.86rem !important;
+  }
+
+  .floating-nav {
+    width: 94%;
+    padding: 0.35rem 0.8rem;
+    top: 0.6rem;
+  }
+
+  .nav-title {
+    font-size: 0.78rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 52%;
+  }
+
+  .audio-btn {
+    padding: 0.3rem 0.65rem;
+    font-size: 0.74rem;
+    gap: 0.35rem;
+    flex-shrink: 0;
   }
 }
 
