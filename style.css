@@ -533,6 +533,99 @@ body {
 }
 
 /* ========================================================================
+   SES SEVİYESİ & KONTROLLER (VOLUME SLIDER)
+   ======================================================================== */
+.audio-controls-group {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-shrink: 0;
+}
+
+.volume-control-wrapper {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-full);
+  padding: 0.32rem 0.75rem 0.32rem 0.55rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  transition: all var(--transition-fast);
+}
+
+.volume-control-wrapper:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(244, 114, 182, 0.4);
+}
+
+.volume-mute-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  line-height: 1;
+  transition: transform var(--transition-fast);
+  color: inherit;
+}
+
+.volume-mute-btn:hover {
+  transform: scale(1.18);
+}
+
+.volume-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 75px;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.22);
+  outline: none;
+  cursor: pointer;
+  transition: opacity var(--transition-fast);
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(244, 114, 182, 0.85);
+  cursor: pointer;
+  transition: transform var(--transition-fast), background var(--transition-fast);
+}
+
+.volume-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.25);
+  background: var(--accent-rose);
+}
+
+.volume-slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  border: none;
+  box-shadow: 0 0 10px rgba(244, 114, 182, 0.85);
+  cursor: pointer;
+}
+
+.volume-percent {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--accent-rose);
+  min-width: 28px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+/* ========================================================================
    HERO BÖLÜMÜ
    ======================================================================== */
 .hero-section {
@@ -3987,24 +4080,57 @@ body.theater-mode-on .cinema-theater-card {
   }
 
   .floating-nav {
-    width: 94%;
-    padding: 0.35rem 0.8rem;
-    top: 0.6rem;
+    width: 95%;
+    padding: 0.35rem 0.65rem;
+    top: 0.5rem;
   }
 
   .nav-title {
-    font-size: 0.78rem;
+    font-size: 0.74rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 52%;
+    max-width: 32%;
+  }
+
+  .audio-controls-group {
+    gap: 0.35rem;
   }
 
   .audio-btn {
-    padding: 0.3rem 0.65rem;
-    font-size: 0.74rem;
-    gap: 0.35rem;
+    padding: 0.28rem 0.55rem;
+    font-size: 0.72rem;
+    gap: 0.3rem;
     flex-shrink: 0;
+  }
+
+  .volume-control-wrapper {
+    padding: 0.25rem 0.45rem 0.25rem 0.35rem;
+    gap: 0.25rem;
+  }
+
+  .volume-mute-btn {
+    font-size: 0.82rem;
+  }
+
+  .volume-slider {
+    width: 44px;
+    height: 5px;
+  }
+
+  .volume-percent {
+    font-size: 0.66rem;
+    min-width: 24px;
+  }
+}
+
+@media (max-width: 360px) {
+  .nav-title {
+    display: none;
+  }
+
+  .floating-nav {
+    justify-content: center;
   }
 }
 

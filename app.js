@@ -1247,20 +1247,50 @@ let audioSynth = null;
 function initAmbientAudio() {
   const toggleBtn = document.getElementById("audio-toggle-btn");
   const audioText = document.getElementById("audio-text");
+  const volumeSlider = document.getElementById("volume-slider");
+  const volumePercent = document.getElementById("volume-percent");
+  const volumeIcon = document.getElementById("volume-icon");
+  const volumeMuteBtn = document.getElementById("volume-mute-btn");
+
   const musicConfig = (typeof APP_CONFIG !== "undefined" && APP_CONFIG.music) ? APP_CONFIG.music : {
     title: "PERA - Bal",
     src: "assets/audio/pera_bal.mp3",
-    defaultVolume: 0.55
+    defaultVolume: 0.50
   };
+
+  const initialVolume = (musicConfig.defaultVolume !== undefined) ? musicConfig.defaultVolume : 0.50;
+
+  function updateVolumeUI(valPercent) {
+    const clamped = Math.max(0, Math.min(100, Math.round(valPercent)));
+    if (volumeSlider) {
+      volumeSlider.value = clamped;
+      volumeSlider.style.background = `linear-gradient(to right, var(--accent-rose) 0%, var(--accent-rose) ${clamped}%, rgba(255, 255, 255, 0.22) ${clamped}%, rgba(255, 255, 255, 0.22) 100%)`;
+    }
+    if (volumePercent) {
+      volumePercent.textContent = `%${clamped}`;
+    }
+    if (volumeIcon) {
+      if (clamped === 0) {
+        volumeIcon.textContent = "🔇";
+      } else if (clamped < 40) {
+        volumeIcon.textContent = "🔉";
+      } else {
+        volumeIcon.textContent = "🔊";
+      }
+    }
+  }
 
   class AudioPlayer {
     constructor() {
       this.audio = new Audio(musicConfig.src);
       this.audio.loop = true;
       this.audio.preload = "auto";
-      this.audio.volume = musicConfig.defaultVolume || 0.55;
       this.isPlaying = false;
       this.wasPlayingBeforeVideo = false;
+      this.lastNonZeroVolume = initialVolume;
+
+      // Başlangıç sesini %50 olarak ayarla
+      this.setVolume(initialVolume);
 
       this.audio.addEventListener("play", () => {
         this.isPlaying = true;
@@ -1283,6 +1313,24 @@ function initAmbientAudio() {
       this.audio.addEventListener("error", (e) => {
         console.warn("Müzik yükleme veya çalma hatası:", e);
       });
+    }
+
+    setVolume(vol) {
+      const clampedVol = Math.max(0, Math.min(1, vol));
+      this.audio.volume = clampedVol;
+      if (clampedVol > 0) {
+        this.lastNonZeroVolume = clampedVol;
+      }
+      updateVolumeUI(clampedVol * 100);
+    }
+
+    toggleMute() {
+      if (this.audio.volume > 0) {
+        this.lastNonZeroVolume = this.audio.volume;
+        this.setVolume(0);
+      } else {
+        this.setVolume(this.lastNonZeroVolume > 0 ? this.lastNonZeroVolume : 0.50);
+      }
     }
 
     start() {
@@ -1320,6 +1368,19 @@ function initAmbientAudio() {
   if (toggleBtn) {
     toggleBtn.addEventListener("click", () => {
       audioSynth.toggle();
+    });
+  }
+
+  if (volumeSlider) {
+    volumeSlider.addEventListener("input", (e) => {
+      const val = parseFloat(e.target.value);
+      audioSynth.setVolume(val / 100);
+    });
+  }
+
+  if (volumeMuteBtn) {
+    volumeMuteBtn.addEventListener("click", () => {
+      audioSynth.toggleMute();
     });
   }
 }
