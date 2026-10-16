@@ -305,7 +305,7 @@ function initOriginMap() {
 // 4. İÇERİĞİ DOLDURMA (CONFIG -> DOM)
 // ========================================================================
 function populateContent() {
-  document.getElementById("nav-recipient-name").textContent = `${APP_CONFIG.recipientName}'e Özel`;
+  document.getElementById("nav-recipient-name").textContent = `${APP_CONFIG.recipientName}'ıma Özel`;
   document.getElementById("hero-recipient-name").textContent = APP_CONFIG.recipientName;
 
   // Harita Başlıkları & Koordinat Bilgileri
@@ -1255,10 +1255,10 @@ function initAmbientAudio() {
   const musicConfig = (typeof APP_CONFIG !== "undefined" && APP_CONFIG.music) ? APP_CONFIG.music : {
     title: "PERA - Bal",
     src: "assets/audio/pera_bal.mp3",
-    defaultVolume: 0.50
+    defaultVolume: 0.15
   };
 
-  const initialVolume = (musicConfig.defaultVolume !== undefined) ? musicConfig.defaultVolume : 0.50;
+  const initialVolume = (musicConfig.defaultVolume !== undefined) ? musicConfig.defaultVolume : 0.15;
 
   function updateVolumeUI(valPercent) {
     const clamped = Math.max(0, Math.min(100, Math.round(valPercent)));
@@ -1285,11 +1285,18 @@ function initAmbientAudio() {
       this.audio = new Audio(musicConfig.src);
       this.audio.loop = true;
       this.audio.preload = "auto";
+      this.audio.crossOrigin = "anonymous";
       this.isPlaying = false;
       this.wasPlayingBeforeVideo = false;
       this.lastNonZeroVolume = initialVolume;
+      this.currentVolume = initialVolume;
 
-      // Başlangıç sesini %50 olarak ayarla
+      // Web Audio API Değişkenleri (iOS & Mobil Safari'de volume ayarı donanımsal kilitli olduğu için GainNode şarttır)
+      this.audioCtx = null;
+      this.gainNode = null;
+      this.sourceNode = null;
+
+      // Başlangıç sesini %15 olarak uygula
       this.setVolume(initialVolume);
 
       this.audio.addEventListener("play", () => {
@@ -1315,9 +1322,51 @@ function initAmbientAudio() {
       });
     }
 
+    initWebAudio() {
+      if (this.audioCtx) {
+        if (this.audioCtx.state === "suspended") {
+          this.audioCtx.resume();
+        }
+        return;
+      }
+
+      try {
+        const AudioCtxClass = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtxClass) return;
+        this.audioCtx = new AudioCtxClass();
+        this.sourceNode = this.audioCtx.createMediaElementSource(this.audio);
+        this.gainNode = this.audioCtx.createGain();
+        this.gainNode.gain.setValueAtTime(this.currentVolume, this.audioCtx.currentTime);
+        this.sourceNode.connect(this.gainNode);
+        this.gainNode.connect(this.audioCtx.destination);
+
+        // Web Audio aktif olduğunda standart audio volume 1.0 yapılarak GainNode'a tam kontrol verilir
+        this.audio.volume = 1.0;
+      } catch (err) {
+        console.warn("Web Audio API GainNode başlatılamadı, standart audio.volume kullanılacak:", err);
+      }
+    }
+
     setVolume(vol) {
       const clampedVol = Math.max(0, Math.min(1, vol));
-      this.audio.volume = clampedVol;
+      this.currentVolume = clampedVol;
+
+      // Web Audio API Gain Node kontrolü (Tüm mobil cihazlar ve iOS Safari için)
+      if (this.gainNode && this.audioCtx) {
+        if (this.audioCtx.state === "suspended") {
+          this.audioCtx.resume();
+        }
+        this.gainNode.gain.setValueAtTime(clampedVol, this.audioCtx.currentTime);
+        this.audio.volume = 1.0;
+      } else {
+        // Web Audio henüz bağlanmadıysa veya desteklenmiyorsa standart HTML5 volume
+        try {
+          this.audio.volume = clampedVol;
+        } catch (e) {
+          // iOS Safari'de audio.volume read-only olduğunda sessizce geç
+        }
+      }
+
       if (clampedVol > 0) {
         this.lastNonZeroVolume = clampedVol;
       }
@@ -1325,20 +1374,28 @@ function initAmbientAudio() {
     }
 
     toggleMute() {
-      if (this.audio.volume > 0) {
-        this.lastNonZeroVolume = this.audio.volume;
+      this.initWebAudio();
+      if (this.currentVolume > 0) {
+        this.lastNonZeroVolume = this.currentVolume;
         this.setVolume(0);
       } else {
-        this.setVolume(this.lastNonZeroVolume > 0 ? this.lastNonZeroVolume : 0.50);
+        this.setVolume(this.lastNonZeroVolume > 0 ? this.lastNonZeroVolume : 0.15);
       }
     }
 
     start() {
       if (this.isPlaying) return;
+      this.initWebAudio();
+      if (this.audioCtx && this.audioCtx.state === "suspended") {
+        this.audioCtx.resume();
+      }
+
       const playPromise = this.audio.play();
       if (playPromise !== undefined) {
         playPromise.then(() => {
           this.isPlaying = true;
+          // Çalma başlayınca volume'ü teyit et
+          this.setVolume(this.currentVolume);
           if (toggleBtn) toggleBtn.classList.add("playing");
           if (audioText) audioText.textContent = "Çalıyor";
         }).catch((err) => {
@@ -1372,10 +1429,16 @@ function initAmbientAudio() {
   }
 
   if (volumeSlider) {
-    volumeSlider.addEventListener("input", (e) => {
+    const handleVolumeInput = (e) => {
+      audioSynth.initWebAudio();
       const val = parseFloat(e.target.value);
       audioSynth.setVolume(val / 100);
-    });
+    };
+
+    volumeSlider.addEventListener("input", handleVolumeInput, { passive: true });
+    volumeSlider.addEventListener("change", handleVolumeInput, { passive: true });
+    volumeSlider.addEventListener("pointerdown", () => audioSynth.initWebAudio(), { passive: true });
+    volumeSlider.addEventListener("touchstart", () => audioSynth.initWebAudio(), { passive: true });
   }
 
   if (volumeMuteBtn) {

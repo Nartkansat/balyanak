@@ -22,7 +22,7 @@ const APP_CONFIG = {
     title: "PERA - Bal",
     src: "assets/audio/pera_bal.mp3",
     youtubeUrl: "https://www.youtube.com/watch?v=lf9zFEKw9sY",
-    defaultVolume: 0.50
+    defaultVolume: 0.15
   },
 
   // 2. HER ŞEYİN BAŞLADIĞI NOKTA (HARİTA & KOORDİNATLAR)
