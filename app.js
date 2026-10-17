@@ -305,7 +305,18 @@ function initOriginMap() {
 // 4. İÇERİĞİ DOLDURMA (CONFIG -> DOM)
 // ========================================================================
 function populateContent() {
-  document.getElementById("nav-recipient-name").textContent = `${APP_CONFIG.recipientName}'ıma Özel`;
+  const rName = (APP_CONFIG.recipientName || "Bal Yanaklı").trim();
+  let recipientTitle = rName;
+  if (rName.endsWith("ı") || rName.endsWith("I")) {
+    recipientTitle = `${rName}ma`;
+  } else if (rName.endsWith("i") || rName.endsWith("İ")) {
+    recipientTitle = `${rName}me`;
+  } else if (rName.endsWith("lım") || rName.endsWith("lim")) {
+    recipientTitle = `${rName}a`;
+  } else if (!rName.endsWith("ma") && !rName.endsWith("me")) {
+    recipientTitle = `${rName}ma`;
+  }
+  document.getElementById("nav-recipient-name").textContent = `${recipientTitle} Özel`;
   document.getElementById("hero-recipient-name").textContent = APP_CONFIG.recipientName;
 
   // Harita Başlıkları & Koordinat Bilgileri
